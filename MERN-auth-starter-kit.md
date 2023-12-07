@@ -2,6 +2,8 @@
 
 The latest version of my MERN Auth Starter Kit for use by my students.
 
+https://github.com/garytalmes/mern-auth-starter-kit
+
 It features:
 
 - An Express back end with Mongo/Mongoose database.
