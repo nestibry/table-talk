@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const commentSchema = require("./Comment");
 
 const reviewSchema = new Schema({
   photo_id: {
