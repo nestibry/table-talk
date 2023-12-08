@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Auth } from '../components';
 
 
 export default function HomePage(){
@@ -15,6 +16,7 @@ export default function HomePage(){
       <Card>
       <Card.Body>This is some text within a card body.</Card.Body>
     </Card>
+    <Auth />
       <Container>
       <Row>
         <Col xs={6} md={4}>
@@ -24,10 +26,10 @@ export default function HomePage(){
     </Container>
     <div className="mb-2">
         <Button variant="primary" size="lg">
-          Large button
+          Sign Up
         </Button>{' '}
         <Button variant="secondary" size="lg">
-          Large button
+          How it Works
         </Button>
       </div>
 
