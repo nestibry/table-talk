@@ -10,12 +10,12 @@ const userSchema = new Schema({
     type: String,
     required: true
   }
-},{
+}, {
   timestamps: true
 },
 );
 
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10)
   next()
 })
