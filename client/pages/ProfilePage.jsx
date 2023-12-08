@@ -1,57 +1,13 @@
-import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function CreateProfile() {
-  const [formData, setFormData] = useState({
-    username: "",
-
-    password: "",
-    name: "",
-    state: "",
-    profileStatus: "",
-    ageGroup: "",
-    profilePicture: null,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
-
-    const newValue = type === "checkbox" ? checked : files ? files[0] : value;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: newValue,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("your-server-endpoint", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log("Your profile has been created!!!");
-      } else {
-        console.error("Profile not created!");
-      }
-    } catch (error) {
-      console.error("Error!!!!!", error);
-    }
-  };
-
+export default function ProfilePage() {
   return (
     <>
+      <Button variant="secondary">EDIT Profile</Button>{" "}
       <Form onSubmit={handleSubmit}>
         <Form>
           <Row className="mb-3">
@@ -173,24 +129,24 @@ export default function CreateProfile() {
             <option value="1">18-25</option>
             <option value="2">26-35</option>
             <option value="3">36-45</option>
-            <option value="4">46-60</option>
-            <option value="5">60+</option>
+            <option value="3"></option>
           </Form.Select>
 
-          {/* <Form.Group controlId="formFile" className="mb-3">
+          <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>Upload a profile pict</Form.Label>
             <Form.Control type="file" />
-          </Form.Group> */}
+          </Form.Group>
 
-          {/* <Form.Group className="mb-3" id="formGridCheckbox">
+          <Form.Group className="mb-3" id="formGridCheckbox">
             <Form.Check type="checkbox" label="I am over 18 years of age." />
-          </Form.Group> */}
+          </Form.Group>
 
           <Button variant="primary" type="submit">
-            Create Profile
+            Save
           </Button>
         </Form>
       </Form>
+
     </>
   );
 }

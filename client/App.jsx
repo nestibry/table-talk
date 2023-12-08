@@ -5,6 +5,10 @@ import { HomePage, AuthPage, Logout, PrivatePage } from "./pages/";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as React from "react";
 import CreateProfile from "./pages/CreateProfile";
+import HowToPage from "./pages/HowToPage/HowToPage";
+import ProfilePage from "./pages/ProfilePage";
+import SearchPage from "./pages/SearchPage";
+
 
 
 export default function App() {
@@ -30,6 +34,9 @@ export default function App() {
 
             <Route path="/logout" element={<Logout />} />
             <Route path="/createprofile" element={<CreateProfile />} />
+            <Route path ="/howtopage" element={<HowToPage />} />
+            <Route path ="/profile" element={<ProfilePage />} />
+            <Route path ="/search" element={<SearchPage />} />
           </Routes>
         </div>
       </BrowserRouter>
