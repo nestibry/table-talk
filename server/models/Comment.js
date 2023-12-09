@@ -2,16 +2,16 @@ const { Schema, Types } = require('mongoose');
 
 const commentSchema = new Schema(
   {
-    commentId: {
+    comment_id: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
-    commentBody: {
+    comment_body: {
       type: String,
       required: true,
       maxLength: 255
     },
-    username: {
+    email: {
       type: String,
       required: true
     },
@@ -24,10 +24,11 @@ const commentSchema = new Schema(
     },
   },
   {
+    timestamps: true,
     toJSON: {
       getters: true,
     },
-    _id: false,
+    id: false,
   }
 );
 

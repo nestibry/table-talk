@@ -9,6 +9,7 @@ const reviewSchema = new Schema({
   description: {
     type: String,
     required: true,
+    maxLength: 1000
   },
   restaurant_name: {
     type: String,
@@ -33,7 +34,11 @@ const reviewSchema = new Schema({
     },
   ],
   comments: [commentSchema]
-});
+},
+  {
+    timestamps: true
+  },
+);
 
 const Review = model('Review', reviewSchema);
 module.exports = Review;

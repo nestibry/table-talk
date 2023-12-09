@@ -9,6 +9,7 @@ const socialSchema = new Schema({
   description: {
     type: String,
     required: true,
+    maxLength: 255
   },
   creator_id: {
     type: Schema.Types.ObjectId,
@@ -21,7 +22,10 @@ const socialSchema = new Schema({
     },
   ],
   comments: [commentSchema]
-});
+}, {
+  timestamps: true
+},
+);
 
 const Social = model('Social', socialSchema);
 module.exports = Social;
