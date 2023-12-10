@@ -4,11 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { Auth } from '../../components';
+// import { Auth } from '..';
 import dinnerdate from '/images/dinnerdate.png';
 import './HomePage.css';
+import HowToPage from '../HowToPage/HowToPage';
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function HomePage(){
+
 
   return (
     <>
@@ -31,14 +34,19 @@ export default function HomePage(){
             </p>
         </Col>
         <Col xs={12} md={6} className='d-flex flex-column align-items-center'>
+          
           <Image className="dinnerImg" src={dinnerdate} thumbnail />
           <div className="mb-2 ">
         <Button  className="signUp" variant="primary" size="lg">
           Sign Up
         </Button>{' '}
+        <ScrollLink to="howToPage" smooth duration={500}>
         <Button  className= "howBtn" variant="secondary" size="lg">
           How it Works
         </Button>
+          
+        </ScrollLink>
+
       </div>
         </Col>
 
@@ -50,8 +58,11 @@ export default function HomePage(){
     
 
     </Card>
-    <Container></Container>
-    <Auth />
+    <Container id="howToPage">
+    <HowToPage />
+
+    </Container>
+    {/* <Auth /> */}
 
 
     </>

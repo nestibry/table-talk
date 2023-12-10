@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import './HowToPage.css';
 import { useInView } from 'react-intersection-observer';
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 export default function HowToPage(){
   const [refStepOne, inViewStepOne] = useInView({
@@ -10,12 +11,16 @@ export default function HowToPage(){
 
   const [refStepTwo, inViewStepTwo] = useInView({
     triggerOnce: true,
-    delay: 5000, 
+    delay: 2000, 
   });
 
   const [refStepThree, inViewStepThree] = useInView({
     triggerOnce: true,
-    delay: 10000, 
+    delay: 4000, 
+  });
+  const [refStepFour, inViewStepFour] = useInView({
+    triggerOnce: true,
+    delay: 6000, 
   });
     return (
       <>
@@ -29,6 +34,7 @@ export default function HowToPage(){
         </Card.Body>
            {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
       </Card>
+      <br />
       <Card ref={refStepTwo} className={`animated-card ${inViewStepTwo ? 'in-view' : ''}`}>
         <Card.Body className='stepTwo'>
           <Card.Text>
@@ -38,6 +44,7 @@ export default function HowToPage(){
         </Card.Body>
            {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
       </Card>
+      <br />
       <Card ref={refStepThree} className={`animated-card ${inViewStepThree ? 'in-view' : ''}`}>
         <Card.Body className='stepThree'>
           <Card.Text>
@@ -47,6 +54,7 @@ export default function HowToPage(){
         </Card.Body>
            {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
       </Card>
+      <br />
       <Card ref={refStepFour} className={`animated-card ${inViewStepFour ? 'in-view' : ''}`}>
         <Card.Body className='stepFour'>
           <Card.Text>
@@ -56,8 +64,12 @@ export default function HowToPage(){
         </Card.Body>
            {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
       </Card>
+      <div className="d-grid gap-2">
 
-
+      <Button variant="secondary" size="lg">
+        Sing Up Now and Start TableTalking!
+      </Button>
+    </div>
 
 
        </>
