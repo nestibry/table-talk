@@ -44,6 +44,40 @@ async function createComment(id, data) {
   }
 }
 
+async function addLike(id, data) {
+  try {
+    return await Model.findByIdAndUpdate(
+      id,
+      { $addToSet: { "liked_users": data } },
+      {
+        new: true,
+        upsert: true
+      }
+    )
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({ path: "liked_users", select: "display_name" });
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function removeLike(id, data) {
+  try {
+    return await Model.findByIdAndUpdate(
+      id,
+      { $pull: { "liked_users": data } },
+      {
+        new: true,
+        upsert: true
+      }
+    )
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({ path: "liked_users", select: "display_name" });
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 async function updateItemById(id, data) {
   try {
     return await Model.findByIdAndUpdate(
@@ -72,6 +106,8 @@ module.exports = {
   getSocialById: getItemById,
   createSocial: createItem,
   createComment: createComment,
+  addLike: addLike,
+  removeLike: removeLike,
   updateSocialById: updateItemById,
   deleteSocialById: deleteItemById
 }

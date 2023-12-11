@@ -15,11 +15,9 @@ const userSeedData = [
     email: "mhalder@email.com",
     display_name: "mhalder",
     password: "password",
-    profile_pic: "default",
     age: "24",
     location_state: "MN",
     gender_identity: "Male",
-    status: "N/A",
     followers: [],
     following: [],
     social_posts: [],
@@ -29,11 +27,9 @@ const userSeedData = [
     email: "bnestingen@email.com",
     display_name: "bnestingen",
     password: "password",
-    profile_pic: "default",
     age: "24",
     location_state: "N/A",
     gender_identity: "N/A",
-    status: "N/A",
     followers: [],
     following: [],
     social_posts: [],
@@ -43,11 +39,9 @@ const userSeedData = [
     email: "vperez@email.com",
     display_name: "vperez",
     password: "password",
-    profile_pic: "default",
     age: "24",
     location_state: "N/A",
     gender_identity: "N/A",
-    status: "N/A",
     followers: [],
     following: [],
     social_posts: [],
@@ -57,11 +51,9 @@ const userSeedData = [
     email: "slee@email.com",
     display_name: "slee",
     password: "password",
-    profile_pic: "default",
     age: "24",
     location_state: "N/A",
     gender_identity: "N/A",
-    status: "N/A",
     followers: [],
     following: [],
     social_posts: [],
@@ -203,14 +195,6 @@ db.once('open', async () => {
   }
 
 
-  commentSeedData.forEach(comment => {
-    newUsers.forEach(user => {
-      if (comment.creator_id !== user._id) {
-        comment.liked_users.push(user._id);
-      }
-    })
-  })
-
   // Add a creator_id to each social and adds socials to the db
   for (var i = 0; i < socialSeedData.length; i++) {
     socialSeedData[i].creator_id = newUsers[i]._id;
@@ -234,6 +218,7 @@ db.once('open', async () => {
   // Add a creator_id to each review and adds reviews to the db
   for (var i = 0; i < reviewSeedData.length; i++) {
     reviewSeedData[i].creator_id = newUsers[i]._id;
+    reviewSeedData[i].comments = commentSeedData;
   }
 
   reviewSeedData.forEach(post => {
