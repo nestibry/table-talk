@@ -29,16 +29,25 @@ async function createItem(data) {
   }
 }
 
-async function createComment(id, data) {
+async function createComment(id, commentText, commentUserId) {
   try {
     return await Model.findByIdAndUpdate(
       id,
-      { $push: data },
+      {
+        $push: {
+          comments: {
+            comment_body: commentText,
+            creator_id: commentUserId
+          }
+        }
+      },
       {
         new: true,
         upsert: true
       }
-    );
+    )
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({ path: "comments", select: "creator_id" });
   } catch (err) {
     throw new Error(err)
   }
