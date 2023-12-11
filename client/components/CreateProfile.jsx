@@ -11,6 +11,16 @@ import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
 export default function CreateProfile() {
     const [formData, setFormData] = useState({
+        email: '',
+        display_name: '',
+        password: '',
+        profile_pic: '',
+        age: '',
+        location_state: '',
+        gender_identity: '',
+        status: '',
+
+
         username: "",
 
         password: "",
