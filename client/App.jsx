@@ -20,7 +20,7 @@ export default function App() {
                 <div className="container pt-5">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
-                        <Route path="/auth" element={<AuthPage />} />
+                        <Route path="/auth" element={<AuthPage type = "login"/>} />
 
 
                         <Route path="/private" element={
