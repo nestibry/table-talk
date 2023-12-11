@@ -13,6 +13,7 @@ const { User, Social, Review } = require("../models");
 const userSeedData = [
   {
     email: "mhalder@email.com",
+    display_name: "mhalder",
     password: "password",
     profile_pic: "default",
     age: 24,
@@ -26,6 +27,7 @@ const userSeedData = [
   },
   {
     email: "bnestingen@email.com",
+    display_name: "bnestingen",
     password: "password",
     profile_pic: "default",
     age: 24,
@@ -39,6 +41,7 @@ const userSeedData = [
   },
   {
     email: "vperez@email.com",
+    display_name: "vperez",
     password: "password",
     profile_pic: "default",
     age: 24,
@@ -52,6 +55,7 @@ const userSeedData = [
   },
   {
     email: "slee@email.com",
+    display_name: "slee",
     password: "password",
     profile_pic: "default",
     age: 24,
