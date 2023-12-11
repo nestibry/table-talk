@@ -46,8 +46,12 @@ async function createComment(id, commentText, commentUserId) {
         upsert: true
       }
     )
+      .select("creator_id comments")
       .populate({ path: "creator_id", select: "display_name profile_pic status" })
-      .populate({ path: "comments", select: "creator_id" });
+      .populate({
+        path: "comments",
+        populate: { path: "creator_id", select: "display_name profile_pic status" }
+      });
   } catch (err) {
     throw new Error(err)
   }
