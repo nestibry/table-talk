@@ -3,50 +3,54 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 require("dotenv").config();
 
-const Model = User; 
+const Model = User;
 
-  async function verifyUser(req){
-    const cookie = req.cookies["auth-cookie"]
-    if( !cookie ) return false 
+async function verifyUser(req) {
+  const cookie = req.cookies["auth-cookie"]
+  if (!cookie) return false
 
-    const isVerified = jwt.verify(cookie, process.env.JWT_SECRET)
-    if( !isVerified ) return false 
+  const isVerified = jwt.verify(cookie, process.env.JWT_SECRET)
+  if (!isVerified) return false
 
-    const user = await Model.findOne({ _id: isVerified.id })
-    if( !user ) return false 
+  const user = await Model.findOne({ _id: isVerified.id })
+  if (!user) return false
 
-    return user
+  return user
 }
 
 
-async function authenticate(data){
-  let user 
+async function authenticate(data) {
+  let user
 
   try {
     user = await Model.findOne({ email: data.email })
-  } catch(err) {
+  } catch (err) {
     console.log(err)
     throw new Error(err)
   }
 
-  if(!user) throw new Error("No user found")
+  if (!user) throw new Error("No user found")
 
   let userIsOk = false
   try {
-    userIsOk = await bcrypt.compare( data.password, user.password )
-  } catch(err){
+    userIsOk = await bcrypt.compare(data.password, user.password)
+  } catch (err) {
     console.log(err)
     throw new Error(err)
   }
 
-  if(!userIsOk) throw new Error("Could not login")
+  if (!userIsOk) throw new Error("Could not login")
   return user;
 }
 
 
 async function getAllItems() {
   try {
-    return await Model.find();
+    return await Model.find()
+      .populate({ path: "followers", select: "display_name profile_pic status" })
+      .populate({ path: "following", select: "display_name profile_pic status" })
+      .populate({ path: "social_posts" })
+      .populate({ path: "reviews" });
   } catch (err) {
     throw new Error(err)
   }
@@ -54,7 +58,11 @@ async function getAllItems() {
 
 async function getItemById(id) {
   try {
-    return await Model.findById(id);
+    return await Model.findById(id)
+      .populate({ path: "followers", select: "display_name profile_pic status" })
+      .populate({ path: "following", select: "display_name profile_pic status" })
+      .populate({ path: "social_posts" })
+      .populate({ path: "reviews" });
   } catch (err) {
     throw new Error(err)
   }
@@ -74,7 +82,10 @@ async function updateItemById(id, data) {
     return await Model.findByIdAndUpdate(
       id,
       data,
-      { new: true }
+      {
+        new: true,
+        upsert: true,
+      }
     );
   } catch (err) {
     throw new Error(err)
