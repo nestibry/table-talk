@@ -10,11 +10,11 @@ export default function AuthPage({ type = "login" }) {
         <div className="d-flex gap-5">
             {type === 'login' ?
                 <div>
-                    <Auth usage="login" />
+                    <Auth />
                 </div>
                 :
                 <div>
-                    <Auth usage="signup" />
+                    <CreateProfile />
                 </div>
             }
         </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useAppCtx } from "../utils/AppProvider"
 
 
-export default function Auth({usage="signup"}){
+export default function Auth({usage="login"}){
 
   const appCtx = useAppCtx()
 
