@@ -52,7 +52,6 @@ export default function Header() {
                         ) : (
                             <Nav.Link href="/signup">Sign Up</Nav.Link>
                         )}
-
                         {user?._id !== undefined ? (
                             <Nav.Link href="/logout">Logout</Nav.Link>
                         ) : (
