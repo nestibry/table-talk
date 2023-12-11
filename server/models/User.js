@@ -20,7 +20,8 @@ const userSchema = new Schema({
     minLength: 8,
   },
   profile_pic: {
-    type: String
+    type: String,
+    default: "default"
   },
   age: {
     type: Number
@@ -32,7 +33,8 @@ const userSchema = new Schema({
     type: String
   },
   status: {
-    type: String
+    type: String,
+    default: "Enjoying TableTalk"
   },
   followers: [
     {
