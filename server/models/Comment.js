@@ -16,20 +16,13 @@ const commentSchema = new Schema(
       ref: "User",
       require: true
     },
-    created_at: {
-      type: Date,
-      default: Date.now,
-      get: (date) => {
-        return date.toLocaleString();
-      }
-    },
   },
   {
     timestamps: true,
     toJSON: {
       getters: true,
     },
-    id: false,
+    _id: false,
   }
 );
 
