@@ -1,4 +1,4 @@
-body {
+.home {
   background-color: whitesmoke;
   color: black;
   margin: 0;
@@ -15,10 +15,10 @@ p {
   padding-top: 5%;
 }
 
-.homeCard {
+.homecard {
   background-color: #f5be27;
   border-radius: 15%;
-  color: black;
+  /* color: black; */
   font-size: 75%;
   padding: 5%;
 }

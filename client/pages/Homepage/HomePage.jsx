@@ -15,8 +15,8 @@ import { motion } from "framer-motion";
 export default function HomePage() {
   return (
     <>
-  
-        <h1>
+  <main className="home">
+  <h1>
           Welcome to{" "}
           <span style={{ color: "#FFA6D7", fontStyle: "italic" }}>
             TableTalk
@@ -46,7 +46,7 @@ export default function HomePage() {
           </span>
         </motion.h2>
         <br />
-        <Card className="homeCard">
+        <Card className="homecard">
           <Card.Body>
             <Row>
               <Col xs={12} md={6}>
@@ -71,7 +71,7 @@ export default function HomePage() {
                     Sign Up
                   </Button>{" "}
                   <ScrollLink to="howToPage" smooth duration={500}>
-                    <Button className="howBtn" variant="secondary" size="lg">
+                    <Button className="howbtn" variant="secondary" size="lg">
                       How it Works
                     </Button>
                   </ScrollLink>
@@ -84,6 +84,8 @@ export default function HomePage() {
           <HowToPage />
         </Container>
         {/* <Auth /> */}
+  </main>
+        
 
     </>
   );
