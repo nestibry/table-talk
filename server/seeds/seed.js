@@ -16,7 +16,7 @@ const userSeedData = [
     display_name: "mhalder",
     password: "password",
     profile_pic: "default",
-    age: 24,
+    age: "24",
     location_state: "MN",
     gender_identity: "Male",
     status: "N/A",
@@ -30,7 +30,7 @@ const userSeedData = [
     display_name: "bnestingen",
     password: "password",
     profile_pic: "default",
-    age: 24,
+    age: "24",
     location_state: "N/A",
     gender_identity: "N/A",
     status: "N/A",
@@ -44,7 +44,7 @@ const userSeedData = [
     display_name: "vperez",
     password: "password",
     profile_pic: "default",
-    age: 24,
+    age: "24",
     location_state: "N/A",
     gender_identity: "N/A",
     status: "N/A",
@@ -58,7 +58,7 @@ const userSeedData = [
     display_name: "slee",
     password: "password",
     profile_pic: "default",
-    age: 24,
+    age: "24",
     location_state: "N/A",
     gender_identity: "N/A",
     status: "N/A",
@@ -73,19 +73,19 @@ const userSeedData = [
 const commentSeedData = [
   {
     comment_body: "Cool!",
-    email: "mhalder@email.com"
+    creator_id: ""
   },
   {
     comment_body: "Not Cool!",
-    email: "bnestingen@email.com"
+    creator_id: ""
   },
   {
     comment_body: "Kinda Cool!",
-    email: "vperez@email.com"
+    creator_id: ""
   },
   {
     comment_body: "Hot!",
-    email: "slee@email.com"
+    creator_id: ""
   },
 ];
 
@@ -95,28 +95,28 @@ const socialSeedData = [
     description: "Eating pancakes!",
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
   {
     photo_id: "pizza",
     description: "Eating pizza!",
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
   {
     photo_id: "salmon",
     description: "Eating salmon!",
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
   {
     photo_id: "french toast",
     description: "Eating french toast!",
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
 
 ];
@@ -130,7 +130,7 @@ const reviewSeedData = [
     is_recommended: true,
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
   {
     photo_id: "burger",
@@ -140,7 +140,7 @@ const reviewSeedData = [
     is_recommended: true,
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
   {
     photo_id: "pasta",
@@ -150,7 +150,7 @@ const reviewSeedData = [
     is_recommended: true,
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
   {
     photo_id: "ice cream",
@@ -160,7 +160,7 @@ const reviewSeedData = [
     is_recommended: true,
     creator_id: "",
     liked_users: [],
-    comments: commentSeedData,
+    comments: [],
   },
 ];
 
@@ -198,8 +198,23 @@ db.once('open', async () => {
 
 
   // Add a creator_id to each social and adds socials to the db
+  for (var i = 0; i < commentSeedData.length; i++) {
+    commentSeedData[i].creator_id = newUsers[i]._id;
+  }
+
+
+  commentSeedData.forEach(comment => {
+    newUsers.forEach(user => {
+      if (comment.creator_id !== user._id) {
+        comment.liked_users.push(user._id);
+      }
+    })
+  })
+
+  // Add a creator_id to each social and adds socials to the db
   for (var i = 0; i < socialSeedData.length; i++) {
     socialSeedData[i].creator_id = newUsers[i]._id;
+    socialSeedData[i].comments = commentSeedData;
   }
 
 

@@ -24,7 +24,7 @@ const userSchema = new Schema({
     default: "default"
   },
   age: {
-    type: Number
+    type: String
   },
   location_state: {
     type: String

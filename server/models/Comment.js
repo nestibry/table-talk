@@ -11,9 +11,10 @@ const commentSchema = new Schema(
       required: true,
       maxLength: 255
     },
-    email: {
-      type: String,
-      required: true
+    creator_id: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      require: true
     },
     created_at: {
       type: Date,
