@@ -11,19 +11,19 @@ export default function HowToPage() {
   const [refStepOne, inViewStepOne] = useInView({
     triggerOnce: true,
   });
-  //set up for 2 sec intervals
+  //set up for 3 sec intervals
   const [refStepTwo, inViewStepTwo] = useInView({
     triggerOnce: true,
-    delay: 2000,
+    delay: 3000,
   });
 
   const [refStepThree, inViewStepThree] = useInView({
     triggerOnce: true,
-    delay: 4000,
+    delay: 6000,
   });
   const [refStepFour, inViewStepFour] = useInView({
     triggerOnce: true,
-    delay: 6000,
+    delay: 9000,
   });
   return (
     <>

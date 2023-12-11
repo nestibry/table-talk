@@ -60,11 +60,7 @@ export default function HomePage() {
                   dining alone; join TableTalk for a tasty adventure in food and
                   connection!
                 </p>
-                <ScrollLink to="howToPage" smooth duration={500}>
-                    <Button className="howbtn" variant="secondary" size="lg">
-                      How it Works
-                    </Button>
-                  </ScrollLink>
+
               </Col>
               <Col
                 xs={12}
@@ -78,6 +74,11 @@ export default function HomePage() {
                   <Button className="signUp" variant="primary" size="lg">
                     Sign Up
                   </Button>{" "}
+                  <ScrollLink to="howToPage" smooth duration={500}>
+                    <Button className="howbtn" variant="secondary" size="lg">
+                      How it Works
+                    </Button>
+                  </ScrollLink>
   
                 </div>
               </Col>

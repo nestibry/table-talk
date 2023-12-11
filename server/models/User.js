@@ -4,11 +4,20 @@ const bcrypt = require("bcrypt")
 const userSchema = new Schema({
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
+    match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i, "Please use a valid email address."],
+  },
+  display_name: {
+    type: String,
+    required: true,
+    unique: true,
+    maxLength: 24
   },
   password: {
     type: String,
-    required: true
+    required: true,
+    minLength: 8,
   },
   profile_pic: {
     type: String
