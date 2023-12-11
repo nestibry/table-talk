@@ -17,7 +17,8 @@ export default function AppProvider(props) {
         const allowedRoutes = ['/', '/auth', '/signup'];
         console.log(window.location.pathname);
 
-        if (!cookie && window.location.pathname !== "/" && !window.location.pathname.includes("/auth")) {
+        // if (!cookie && window.location.pathname !== "/" && !window.location.pathname.includes("/auth")) {
+        if (!cookie && !allowedRoutes.includes(window.location.pathname)) {
             window.location.href = "/auth"
         }
 

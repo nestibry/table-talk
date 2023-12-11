@@ -21,6 +21,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/auth" element={<AuthPage type = "login"/>} />
+                        <Route path="/signup" element={<AuthPage type = "login"/>} />
 
 
                         <Route path="/private" element={
