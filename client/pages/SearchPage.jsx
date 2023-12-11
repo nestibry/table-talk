@@ -9,11 +9,13 @@ import React, { useState } from 'react';
 
 
 export default function SearchPage() {
-  const [status, setStatus] = useState('Default Status');
+  const [status, setStatus] = useState('Not Following'); 
 
   const handleButtonClick = () => {
-    setStatus((prevStatus) => (prevStatus === 'Active' ? 'Inactive' : 'Active'));
+    setStatus((prevStatus) => (prevStatus === 'Not Following' ? 'Following' : 'Not Following'));
   };
+
+  //need to add in filter by calls
   return (
     <>
       <h1>Search for TableTalkers</h1>
@@ -42,13 +44,15 @@ export default function SearchPage() {
       </InputGroup>
       <container className="searchResults">
       <Card style={{ width: '18rem' }}>
-        <ListGroup variant="flush">
-          <ListGroup.Item>Username</ListGroup.Item>
-          <ListGroup.Item>Status</ListGroup.Item>
-          <ListGroup.Item>Following Status: {status}</ListGroup.Item>
-        </ListGroup>
-        <Button onClick={handleButtonClick}>Change Status</Button>
-      </Card>
+          <ListGroup variant="flush">
+            <ListGroup.Item>Username</ListGroup.Item>
+            <ListGroup.Item>Status</ListGroup.Item>
+            <ListGroup.Item>Friend: {status}</ListGroup.Item>
+          </ListGroup>
+          <Button onClick={handleButtonClick}>
+            {status === 'Following' ? 'Unfollow' : 'Follow'}
+          </Button>
+        </Card>
     </container>
     </>
   );
