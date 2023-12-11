@@ -1,0 +1,41 @@
+.home {
+  background-color: whitesmoke;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.welcome {
+  font-size: 500%;
+  font-weight: 900;
+  text-align: center;
+}
+
+.intro {
+  font-size: 200%;
+  padding-top: 5%;
+  padding-left: 10%;
+}
+
+.homecard {
+  background-color: #f5be27;
+  color: black;
+  font-size: 75%;
+  font-weight: bolder;
+  padding: 10%;
+}
+
+
+.signUp {
+  background-color: #c24646;
+  font-size: 25%;
+}
+
+.howBtn {
+  background-color: #ffa6d7;
+}
+@media only screen and (max-width: 600px) {
+  main {
+    padding: 10px;
+  }
+}
