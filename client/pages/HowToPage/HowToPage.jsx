@@ -3,9 +3,7 @@ import "./HowToPage.css";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { motion } from "framer-motion";
+
 
 export default function HowToPage() {
   const [refStepOne, inViewStepOne] = useInView({
@@ -14,16 +12,16 @@ export default function HowToPage() {
   //set up for 3 sec intervals
   const [refStepTwo, inViewStepTwo] = useInView({
     triggerOnce: true,
-    delay: 3000,
+    delay: 6000,
   });
 
   const [refStepThree, inViewStepThree] = useInView({
     triggerOnce: true,
-    delay: 6000,
+    delay: 9000,
   });
   const [refStepFour, inViewStepFour] = useInView({
     triggerOnce: true,
-    delay: 9000,
+    delay: 12000,
   });
   return (
     <>
@@ -32,6 +30,7 @@ export default function HowToPage() {
       <br />
         
           <Card
+
             ref={refStepOne}
             className={`animated-card ${inViewStepOne ? "in-view" : ""}`}
           >

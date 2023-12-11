@@ -75,7 +75,7 @@ export default function HomePage() {
                     Sign Up
                   </Button>{" "}
                   <ScrollLink to="howToPage" smooth duration={500}>
-                    <Button className="howbtn" variant="secondary" size="lg">
+                    <Button className="howbtn" variant="light" size="lg">
                       How it Works
                     </Button>
                   </ScrollLink>
