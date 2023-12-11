@@ -27,12 +27,12 @@
 
 
 .signUp {
-  background-color: #c24646;
-  font-size: 25%;
+  background-color: #c24646 !important;
+  
 }
 
 .howBtn {
-  background-color: #ffa6d7;
+  background-color: #ffa6d7 ;
 }
 @media only screen and (max-width: 600px) {
   main {
