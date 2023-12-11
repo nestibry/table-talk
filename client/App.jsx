@@ -12,37 +12,34 @@ import SearchPage from "./pages/SearchPage";
 
 
 export default function App() {
-  return (
-    <AppProvider>
-   
-      <BrowserRouter>
-        <Header />
-        <div className="container pt-5">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/auth" element={<AuthPage />} />
-          
+    return (
+        <AppProvider>
 
-            <Route
-              path="/private"
-              element={
-                <ProtectedRoute>
-                  <PrivatePage />
-                </ProtectedRoute>
-              }
-            />
+            <BrowserRouter>
+                <Header />
+                <div className="container pt-5">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/auth" element={<AuthPage />} />
 
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/createprofile" element={<CreateProfile />} />
-            <Route path ="/howtopage" element={<HowToPage />} />
-            <Route path ="/profile" element={<ProfilePage />} />
-            <Route path ="/search" element={<SearchPage />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-   
- 
-      
-    </AppProvider>
-  );
+
+                        <Route path="/private" element={
+                                <ProtectedRoute>
+                                    <PrivatePage />
+                                </ProtectedRoute>
+                        }/>
+
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/createprofile" element={<CreateProfile />} />
+                        <Route path="/howtopage" element={<HowToPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/search" element={<SearchPage />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+
+
+
+        </AppProvider>
+    );
 }
