@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <>
   <main className="home">
-  <h1>
+  <h1 className="welcome">
           Welcome to{" "}
           <span style={{ color: "#FFA6D7", fontStyle: "italic" }}>
             TableTalk
@@ -46,11 +46,12 @@ export default function HomePage() {
           </span>
         </motion.h2>
         <br />
-        <Card className="homecard">
-          <Card.Body>
+        
+        <Card >
+          <Card.Body className="homecard">
             <Row>
               <Col xs={12} md={6}>
-                <p>
+                <p className="intro" style={{color:"#070808"}}> 
                   Want to spice up your social life? Our app is designed for
                   food enthusiasts seeking both delicious meals and meaningful
                   connections. Discover must-try restaurants, swipe through
@@ -59,22 +60,25 @@ export default function HomePage() {
                   dining alone; join TableTalk for a tasty adventure in food and
                   connection!
                 </p>
+                <ScrollLink to="howToPage" smooth duration={500}>
+                    <Button className="howbtn" variant="secondary" size="lg">
+                      How it Works
+                    </Button>
+                  </ScrollLink>
               </Col>
               <Col
                 xs={12}
                 md={6}
                 className="d-flex flex-column align-items-center"
               >
-                <Image className="dinnerImg" src={dinnerdate} thumbnail />
+                <Image style={{backgroundColor: "transparent", border:"none", height:"60%", width:"60%" }} className="dinnerdate" src={dinnerdate} thumbnail />
+                <br />
+                <br />
                 <div className="mb-2 ">
                   <Button className="signUp" variant="primary" size="lg">
                     Sign Up
                   </Button>{" "}
-                  <ScrollLink to="howToPage" smooth duration={500}>
-                    <Button className="howbtn" variant="secondary" size="lg">
-                      How it Works
-                    </Button>
-                  </ScrollLink>
+  
                 </div>
               </Col>
             </Row>

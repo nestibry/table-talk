@@ -5,29 +5,27 @@
   padding: 0;
 }
 
-h1 {
+.welcome {
   font-size: 500%;
   font-weight: 900;
+  text-align: center;
 }
 
-p {
+.intro {
   font-size: 200%;
   padding-top: 5%;
+  padding-left: 10%;
 }
 
 .homecard {
   background-color: #f5be27;
-  border-radius: 15%;
-  /* color: black; */
+  color: black;
   font-size: 75%;
-  padding: 5%;
+  font-weight: bolder;
+  padding: 10%;
 }
 
-.dinnerImg {
-  /* background-color: #f5be27; */
-  border-radius: 25%;
-  border: none;
-}
+
 .signUp {
   background-color: #c24646;
   font-size: 25%;
