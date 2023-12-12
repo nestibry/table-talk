@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppProvider from "./utils/AppProvider";
-import { Header, ProtectedRoute } from "./components";
+import { ProtectedRoute } from "./components";
 import { HomePage, AuthPage, Logout, PrivatePage } from "./pages/";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as React from "react";
@@ -11,6 +11,7 @@ import SearchPage from "./pages/SearchPage";
 import NewsFeed from "./pages/NewsFeed";
 import "./App.css";
 import Navbar from "./components/Navbar"
+import Header from "./components/Header/Header";
 
 
 

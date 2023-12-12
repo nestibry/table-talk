@@ -1,21 +1,25 @@
 .how {
-  background-color: whitesmoke;
-  color: black;
+  background-color: #070808;
+  color: white;
   margin: 0;
   padding: 0;
 }
 .howto {
   font-size: 500%;
   font-weight: 900;
-  color: #070808;
+  
   text-align: center;
   padding-top: 10%;
   
 }
 
 .stepOne, .stepTwo, .stepThree, .stepFour {
- border: none !important;
+ border: transparent  !important;
+ color:#070808 !important;
+ font-size: 40px;
+ text-align: center;
 }
+
 .stepOne {
   background-color: #ffa6d7;
 
@@ -41,4 +45,7 @@
 .animated-card.in-view {
   opacity: 1;
   transform: translateY(0);
+}
+.d-grid {
+  background-color: #ffa6d7 !important;
 }

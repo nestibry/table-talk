@@ -24,7 +24,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function Post({ type = "review" }) {
+export default function Post({ type = "review", resName }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const user = {
@@ -127,16 +127,16 @@ export default function Post({ type = "review" }) {
            /*  is this what you were talking about Bryan for the prop? It breaks the code when uncommented, so clearly I did it wrong */
     
 
-            {/* {type === "review" && (
+            {type === "review" && (
               <div>
                 <Typography variant="body2" color="text.secondary">
-                  Restaurant: {review.restaurant_name}
+                  Restaurant: {resName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Location: {review.restaurant_city}
+                  Location: 
                 </Typography>
               </div>
-            )} */}
+            )}
           </CardContent>
         </Collapse>
       </Card>
