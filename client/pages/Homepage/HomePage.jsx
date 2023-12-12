@@ -74,7 +74,7 @@ export default function HomePage() {
                 <br />
                 <br />
                 <div className="mb-2 " >
-                  <Button as={Link} to="/CreateProfile" className="signUp" variant="primary" size="lg"
+                  <Button as={Link} to="/signup" className="signUp" variant="primary" size="lg"
                   style={{marginRight: "20px", backgroundColor: "#C24646"}}>
                     Ready to Sign Up
                   </Button>{" "}

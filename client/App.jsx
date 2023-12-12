@@ -12,7 +12,7 @@ import NewsFeed from "./pages/NewsFeed";
 import "./App.css";
 import Navbar from "./components/Navbar"
 import Header from "./components/Header/Header";
-
+import CreatePost from "./pages/CreatePost";
 
 
 
@@ -42,6 +42,7 @@ export default function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/newsfeed" element={<NewsFeed />} />
                         <Route path="/nav" element={<Navbar />} />
+                        <Route path="post" element={<CreatePost /> } />
 
                     </Routes>
                 </div>
