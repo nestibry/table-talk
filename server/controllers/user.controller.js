@@ -68,10 +68,70 @@ async function getItemById(id) {
   }
 }
 
+async function performSearch(id, data, isFollowing) {
+  const re = new RegExp(`${data}`, "i");
+  try {
+    if (isFollowing) {
+      const userInfo = await Model.findById(id, "following")
+        .populate({ path: "following", select: "display_name profile_pic status" });
+      // console.log(userInfo);
+      const payload = [];
+
+      // const test = regex.test(userInfo.following[0].display_name);
+      // console.log(test);
+
+      userInfo.following.forEach(item => {
+        if (re.test(item.display_name)) {
+          payload.push(item);
+        }
+      })
+
+      return payload;
+    } else {
+      return await Model.find({ "display_name": re })
+        .select("display_name profile_pic status");
+    }
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 // use this as our signup handler
 async function createItem(data) {
   try {
     return await Model.create(data);
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function addFollow(id, data) {
+  try {
+    return await Model.findByIdAndUpdate(
+      id,
+      { $addToSet: data },
+      {
+        new: true,
+        upsert: true
+      }
+    )
+      .select("display_name following followers");
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function removeFollow(id, data) {
+  try {
+    return await Model.findByIdAndUpdate(
+      id,
+      { $pull: data },
+      {
+        new: true,
+        upsert: true,
+      }
+    )
+      .select("display_name following followers");
   } catch (err) {
     throw new Error(err)
   }
@@ -103,7 +163,10 @@ async function deleteItemById(id) {
 module.exports = {
   getAllUsers: getAllItems,
   getUserById: getItemById,
+  performSearch: performSearch,
   createUser: createItem,
+  addFollow: addFollow,
+  removeFollow: removeFollow,
   updateUserById: updateItemById,
   deleteUserById: deleteItemById,
   authenticate,

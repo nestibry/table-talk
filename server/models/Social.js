@@ -23,7 +23,11 @@ const socialSchema = new Schema({
   ],
   comments: [commentSchema]
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: {
+    getters: true,
+    virtuals: true
+  },
 },
 );
 

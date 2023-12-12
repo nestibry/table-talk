@@ -11,16 +11,10 @@ const commentSchema = new Schema(
       required: true,
       maxLength: 255
     },
-    email: {
-      type: String,
-      required: true
-    },
-    created_at: {
-      type: Date,
-      default: Date.now,
-      get: (date) => {
-        return date.toLocaleString();
-      }
+    creator_id: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      require: true
     },
   },
   {
@@ -28,7 +22,7 @@ const commentSchema = new Schema(
     toJSON: {
       getters: true,
     },
-    id: false,
+    _id: false,
   }
 );
 

@@ -29,16 +29,63 @@ async function createItem(data) {
   }
 }
 
-async function createComment(id, data) {
+async function createComment(id, commentText, commentUserId) {
   try {
     return await Model.findByIdAndUpdate(
       id,
-      { $push: data },
+      {
+        $push: {
+          comments: {
+            comment_body: commentText,
+            creator_id: commentUserId
+          }
+        }
+      },
       {
         new: true,
         upsert: true
       }
-    );
+    )
+      .select("creator_id comments")
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({
+        path: "comments",
+        populate: { path: "creator_id", select: "display_name profile_pic status" }
+      });
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function addLike(id, data) {
+  try {
+    return await Model.findByIdAndUpdate(
+      id,
+      { $addToSet: { "liked_users": data } },
+      {
+        new: true,
+        upsert: true
+      }
+    )
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({ path: "liked_users", select: "display_name" });
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function removeLike(id, data) {
+  try {
+    return await Model.findByIdAndUpdate(
+      id,
+      { $pull: { "liked_users": data } },
+      {
+        new: true,
+        upsert: true
+      }
+    )
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({ path: "liked_users", select: "display_name" });
   } catch (err) {
     throw new Error(err)
   }
@@ -72,6 +119,8 @@ module.exports = {
   getSocialById: getItemById,
   createSocial: createItem,
   createComment: createComment,
+  addLike: addLike,
+  removeLike: removeLike,
   updateSocialById: updateItemById,
   deleteSocialById: deleteItemById
 }
