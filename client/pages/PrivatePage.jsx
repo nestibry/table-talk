@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppCtx } from "../utils/AppProvider";
+import PostCard from "../components/PostCard";
 
 export default function ProtectedPage() {
     const appCtx = useAppCtx();
@@ -38,16 +39,14 @@ export default function ProtectedPage() {
         <div>
             <h1>News Feed</h1>
             {posts ? (
-                posts.map(post => (
-                    <div key={post._id}>
-                        <p>{post.description}</p>
-                        <p>{post._id}</p>
-                    </div>
-                ))
+                    posts.map(post => (
+                        <div className="mb-3">
+                            <PostCard key={post._id} post={post} />
+                        </div>
+                    ))
             ) : (
                 <p>Loading...</p>
             )}
-            <p>This is an example of a page that would require an authenticated user.</p>
         </div>
     );
 }
