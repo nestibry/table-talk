@@ -49,7 +49,7 @@ export default function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/newsfeed" element={<NewsFeed />} />
                         <Route path="/nav" element={<Navbar />} />
-                        <Route path="post" element={<CreatePost /> } />
+                        <Route path="createpost" element={<CreatePost /> } />
 
                     </Routes>
                 </div>
