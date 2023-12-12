@@ -14,7 +14,6 @@ import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 export default function CreateProfile() {
 
     const appCtx = useAppCtx();
-
     const [formData, setFormData] = useState({
         email: '',
         display_name: '',
@@ -25,6 +24,24 @@ export default function CreateProfile() {
         gender_identity: '',
         profile_pic: '',
     });
+
+
+    const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i;
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    function handleEmailChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setIsEmailValid(emailRegex.test(e.target.value));
+    };
+
+
+    const [isPasswordValid, setIsPasswordValid] = useState(true);
+    function handlePasswordChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        // Check if the password meets the minimum length requirement
+        setIsPasswordValid(e.target.value.length >= 8);
+    };
+
+
 
     function handleFormChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,49 +78,70 @@ export default function CreateProfile() {
 
     return (
         <>
-
-            {/* 
-            [x] email: '',
-            [x] display_name: '',
-            [x] password: '',
-
-            [x] status: '' 
-            [x] location_state: '',
-            [x] age: '',
-            gender_identity: '',
-            profile_pic: '',
-        */}
-            <Form onSubmit={handleFormSubmit} onChange={handleFormChange}>
+            <Form onSubmit={handleFormSubmit}>
 
                 <Form.Group className="mb-3" controlId="formEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="name@example.com" required />
+                    <Form.Control
+                        type="email"
+                        name='email'
+                        placeholder="name@example.com"
+                        value={formData.email}
+                        onChange={handleEmailChange}
+                        isInvalid={!isEmailValid}
+                        pattern={emailRegex}
+                        title="Enter a valid email address"
+                        required />
+                    <Form.Control.Feedback type="invalid">
+                        Please enter a valid email address.
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formDisplayName">
                     <Form.Label>Display Name</Form.Label>
-                    <Form.Control type="text" name="display_name" placeholder="YourDisplayName" />
+                    <Form.Control
+                        type="text"
+                        name="display_name"
+                        placeholder="YourDisplayName"
+                        required
+                        onChange={handleFormChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name="password" placeholder="Password" />
+                    <Form.Control
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                        onChange={handlePasswordChange}
+                        pattern=".{8,}" // Minimum length of 8 characters
+                        title="Password must be at least 8 characters"
+                        isInvalid={!isPasswordValid}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        Password must be at least 8 characters.
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formProfileStatus">
                     <Form.Label>Profile Status</Form.Label>
-                    <Form.Select name="status">
-                        <option>Select Status</option>
-                        <option value="1">Looking for new friends</option>
-                        <option value="2">Looking for a romantic connection</option>
-                        <option value="3">Just here for the food recommendations</option>
+                    <Form.Select
+                        name="status"
+                        onChange={handleFormChange}>
+                        <option></option>
+                        <option>Looking for new friends</option>
+                        <option>Looking for a romantic connection</option>
+                        <option>Just here for the food recommendations</option>
                     </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formLocationState">
                     <Form.Label>State</Form.Label>
-                    <Form.Select name="location_state">
-                        <option value="">Select State</option>
+                    <Form.Select
+                        name="location_state"
+                        onChange={handleFormChange}>
+                        <option></option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -159,19 +197,23 @@ export default function CreateProfile() {
 
                 <Form.Group className="mb-3" controlId="formAge">
                     <Form.Label>Age</Form.Label>
-                    <Form.Select name="age">
-                        <option>Select Age Range</option>
+                    <Form.Select
+                        name="age"
+                        onChange={handleFormChange}>
+                        <option></option>
                         <option>18-25</option>
-                        <option value="2">26-35</option>
-                        <option value="3">36-45</option>
-                        <option value="4">46-60</option>
-                        <option value="5">60+</option>
+                        <option>26-35</option>
+                        <option>36-45</option>
+                        <option>46-60</option>
+                        <option>60+</option>
                     </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formPronoun">
                     <Form.Label>Pronoun</Form.Label>
-                    <Form.Select name="gender_identity">
+                    <Form.Select
+                        name="gender_identity"
+                        onChange={handleFormChange}>
                         <option></option>
                         <option>He/Him</option>
                         <option>She/Her</option>
