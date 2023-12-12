@@ -27,7 +27,7 @@ export default function Header() {
                         <Nav className="">
 
                             {user?._id !== undefined ? (
-                                <Nav.Link href="/private">Private Page</Nav.Link>
+                                <Nav.Link href="/feed">News Feed</Nav.Link>
                             ) : (
                                 <Nav.Link href="/signup">Sign Up</Nav.Link>
                             )}
