@@ -20,10 +20,11 @@ const userSchema = new Schema({
     minLength: 8,
   },
   profile_pic: {
-    type: String
+    type: String,
+    default: "default"
   },
   age: {
-    type: Number
+    type: String
   },
   location_state: {
     type: String
@@ -32,7 +33,8 @@ const userSchema = new Schema({
     type: String
   },
   status: {
-    type: String
+    type: String,
+    default: "Enjoying TableTalk"
   },
   followers: [
     {
@@ -59,7 +61,11 @@ const userSchema = new Schema({
     },
   ],
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: {
+    getters: true,
+    virtuals: true
+  },
 },
 );
 

@@ -8,6 +8,10 @@ import CreateProfile from "./pages/CreateProfile";
 import HowToPage from "./pages/HowToPage/HowToPage";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
+import NewsFeed from "./pages/NewsFeed";
+import "./App.css";
+import Navbar from "./components/Navbar"
+
 
 
 
@@ -35,7 +39,10 @@ export default function App() {
                         <Route path="/howtopage" element={<HowToPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/search" element={<SearchPage />} />
-                    </Routes>
+                      <Route path ="/newsfeed" element= {<NewsFeed />} />
+            <Route path ="/nav" element = {<Navbar />} />
+     
+          </Routes>
                 </div>
             </BrowserRouter>
 

@@ -12,10 +12,13 @@
   padding-top: 10%;
   
 }
+
+.stepOne, .stepTwo, .stepThree, .stepFour {
+ border: none !important;
+}
 .stepOne {
   background-color: #ffa6d7;
-  border: none;
-  color: #070808;
+
 }
 
 .stepTwo {
