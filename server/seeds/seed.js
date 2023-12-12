@@ -87,28 +87,28 @@ const commentSeedData = [
 
 const socialSeedData = [
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702422720/table-talk/house.png",
     description: "Eating pancakes!",
     creator_id: "",
     liked_users: [],
     comments: [],
   },
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702422684/table-talk/group.png",
     description: "Eating pizza!",
     creator_id: "",
     liked_users: [],
     comments: [],
   },
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702420505/table-talk/alone.png",
     description: "Eating salmon!",
     creator_id: "",
     liked_users: [],
     comments: [],
   },
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702422720/table-talk/house.png",
     description: "Eating french toast!",
     creator_id: "",
     liked_users: [],
@@ -119,7 +119,7 @@ const socialSeedData = [
 
 const reviewSeedData = [
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702422700/table-talk/dinnerdate.png",
     description: "The soup was good!",
     restaurant_name: "Local Soup",
     restaurant_city: "Mankato",
@@ -139,7 +139,7 @@ const reviewSeedData = [
     comments: [],
   },
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702422684/table-talk/group.png",
     description: "The pasta was good!",
     restaurant_name: "Local Pasta",
     restaurant_city: "Des Moines",
@@ -149,7 +149,7 @@ const reviewSeedData = [
     comments: [],
   },
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702422700/table-talk/dinnerdate.png",
     description: "The ice cream was good!",
     restaurant_name: "Local Ice Cream",
     restaurant_city: "San Diego",
