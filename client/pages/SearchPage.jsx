@@ -5,7 +5,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAppCtx } from "../utils/AppProvider";
+import Search from "../components/Search";
 
 
 
@@ -16,25 +18,29 @@ export default function SearchPage() {
   const [status, setStatus] = useState('Not Following');
   const [dropDownValue, setDropDownValue] = useState("Filter By: All Users")
 
+  const [userData, setUserData] = useState("");
+
+  // const appCtx = useAppCtx();
+
   async function postInfo(searchCriteria, isFollowing) {
     const res = await fetch(`/api/user/search/${userId}`, {
       method: "POST",
       body: JSON.stringify({
         searchCriteria: searchCriteria,
-        isFollowing: isFollowing
+        isFollowing: false
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     })
     const postData = await res.json()
-    console.log(postData)
-    setData(postData);
+    console.log(postData.payload)
+    setData(postData.payload);
   }
 
-  const handleButtonClick = () => {
-    setStatus((prevStatus) => (prevStatus === 'Not Following' ? 'Following' : 'Not Following'));
-  };
+  // const handleButtonClick = () => {
+  //   setStatus((prevStatus) => (prevStatus === 'Not Following' ? 'Following' : 'Not Following'));
+  // };
 
   function handleSearchBtnClick(e) {
     const filterByElem = document.querySelector("#filter-by");
@@ -62,6 +68,11 @@ export default function SearchPage() {
     setDropDownValue("Filter By: " + e.target.textContent)
   }
 
+
+  useEffect(() => {
+    // console.log(appCtx.user._id);
+  }, []);
+
   //need to add in filter by calls
   return (
     <>
@@ -86,7 +97,7 @@ export default function SearchPage() {
           id="filter-by"
         >
           <Dropdown.Item as="button"><div onClick={changeDropDownValue}>All Users</div></Dropdown.Item>
-          <Dropdown.Item as="button"><div onClick={changeDropDownValue}>Following Only</div></Dropdown.Item>
+          {/* <Dropdown.Item as="button"><div onClick={changeDropDownValue}>Following Only</div></Dropdown.Item> */}
         </DropdownButton>
         <Form.Control
           placeholder="Search by Username"
@@ -110,6 +121,18 @@ export default function SearchPage() {
           </Button>
         </Card> }
     </div > } */}
+
+      <div className="search-results">
+        {data ? (
+          data.map(user => (
+            <div key={user._id}>
+              <Search display_name={user.display_name} profile_pic={user.profile_pic} status={user.status} />
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </>
   );
 }
