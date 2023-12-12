@@ -5,14 +5,14 @@ import CardActions from "@mui/material/CardActions";
 // import Typography from '@mui/material/Typography';
 import { Button, TextField } from "@mui/material";
 import CloudinaryUploadWidget from "../components/CloudinaryUploadWidget";
+// import { set } from "mongoose";
 
 export default function CreatePost() {
   const [postContent, setPostContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
   const [restaurantName, setRestaurantName] = useState("");
-  const [restaurantLocation, setRestaurantLocation] = useState("");
-
+  const [restaurantCity, setRestaurantCity] = useState("");
 
   // Replace with your own cloud name
   const [cloudName] = useState("table-talk");
@@ -30,7 +30,7 @@ export default function CreatePost() {
   const [uwConfig] = useState({
     cloudName,
     uploadPreset,
-    // cropping: true, //add a cropping step
+    cropping: true, //add a cropping step
     // showAdvancedOptions: true,  //add advanced options (public_id and tag)
     sources: ["local"], // restrict the upload sources to URL and local files
     multiple: false, //restrict upload to a single file
@@ -42,6 +42,7 @@ export default function CreatePost() {
     maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
     // theme: "purple", //change to a purple theme
     form: "#upload-widget",
+    singleUploadAutoClose: false,
   });
 
   console.log(imageUrl);
@@ -51,24 +52,86 @@ export default function CreatePost() {
   //     console.log(formData);
   // }, [imageUrl])
 
+  const createPost = async (postData) => {
+    // console.log("Caption!!!", postContent);
+
+    try {
+      console.log("posting data", postData);
+
+      if (postData.restaurant_name && postData.restaurant_city) {
+        const response = await fetch("/api/review", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        });
+
+        if (response.ok) {
+          console.log(" Review Posted!");
+        } else {
+          console.error("Review not posted!", await response.json());
+        }
+      } else {
+        const response = await fetch("/api/social", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        });
+
+        if (response.ok) {
+          console.log("Social Posted!");
+        } else {
+          console.error("Social not posted!", await response.json());
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const postDataWithRestaurant = {
+    photo_id: "uploaded photo",
+    description: "caption",
+    restaurant_name: "name of restaurant",
+    restaurant_city: "city of restaurant",
+    // is_recommended: true, 
+  };
+  
+  createPost(postDataWithRestaurant);
+  
+
+
+
   const handlePostSubmit = () => {
-    console.log("Caption!!!", postContent);
-    
-    
+    if (!imageUrl) {
+      alert("Please upload a photo to post");
+      return;
+    }
+    const postData = {
+      photo_id: imageUrl,
+      description: postContent,
+      restaurant_name: restaurantName,
+      restaurant_city: restaurantCity,
+    };
+
+    createPost(postData);
     setPostContent("");
     setImageUrl("");
     setRestaurantName("");
-    setRestaurantLocation("");
-  
+    setRestaurantCity("");
   };
+
+
+
   return (
     <Card sx={{ maxWidth: 345 }}>
-      
       <CardContent>
-      <div>
+        <div>
           <h3>Upload a Photo</h3>
           <CloudinaryUploadWidget
-      
             uwConfig={uwConfig}
             setImageUrl={setImageUrl}
             setIsUploaded={setIsUploaded}
@@ -87,7 +150,7 @@ export default function CreatePost() {
           fullWidth
           sx={{ marginBottom: "16px" }}
         />
-       
+
         <TextField
           label="Restaurant"
           id="outlined-size-small"
@@ -98,16 +161,16 @@ export default function CreatePost() {
           sx={{ marginBottom: "16px" }}
         />
         <TextField
-          label="Restaurant Location"
+          label="Restaurant City"
           id="outlined-size-small"
-          value={restaurantLocation}
-          onChange={(e) => setRestaurantLocation(e.target.value)}
+          value={restaurantCity}
+          onChange={(e) => setRestaurantCity(e.target.value)}
           defaultValue=""
           size="small"
         />
       </CardContent>
       <CardActions>
-        <Button onClick={ handlePostSubmit } size="small" color="primary">
+        <Button onClick={handlePostSubmit} size="small" color="primary">
           Add Post
         </Button>
       </CardActions>
