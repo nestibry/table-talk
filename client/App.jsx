@@ -1,19 +1,40 @@
+import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppProvider from "./utils/AppProvider";
-import { ProtectedRoute } from "./components";
-import {  AuthPage, Logout, PrivatePage, Home } from "./pages/";
 import "bootstrap/dist/css/bootstrap.min.css";
-import * as React from "react";
-import CreateProfile from "./pages/CreateProfile";
-import HowToPage from "./pages/HowToPage/HowToPage";
-import ProfilePage from "./pages/ProfilePage";
-import SearchPage from "./pages/SearchPage";
-import NewsFeed from "./pages/NewsFeed";
 import "./App.css";
-import Navbar from "./components/Navbar"
-import Header from "./components/Header/Header";
-import CreatePost from "./pages/CreatePost";
 
+import { 
+            ProtectedRoute,
+            Header, 
+
+            Navbar,
+        } from "./components/";
+
+import {    
+            AuthPage, 
+            Logout, 
+            Home, 
+            NewsFeed,
+            ProfilePage,
+            SearchPage,
+            CreatePost,
+
+            CreateProfile,
+            HowToPage,
+        } from "./pages/";
+
+        
+        // import Navbar from "./components/Navbar"
+        // import CreatePost from "./pages/CreatePost";
+        
+        // import NewsFeed from "./pages/NewsFeed";
+        // import SearchPage from "./pages/SearchPage";
+        // import ProfilePage from "./pages/ProfilePage";
+        // import HowToPage from "./pages/HowToPage/HowToPage";
+        // import CreateProfile from "./pages/CreateProfile";
+        // import Header from "./components/Header/Header";
+        // import { Header } from './components/';
 
 
 
@@ -29,14 +50,12 @@ export default function App() {
                         <Route path="/auth" element={<AuthPage type="login" />} />
                         <Route path="/signup" element={<AuthPage type="signup" />} />
 
-
-                        <Route path="/feed" element={
-                            <ProtectedRoute>
-                                <NewsFeed />
-                            </ProtectedRoute>
-                        } />
+                        {/* Protected Routes */}
+                        <Route path="/feed" element={<ProtectedRoute><NewsFeed /></ProtectedRoute>} />
 
                         <Route path="/logout" element={<Logout />} />
+
+                        {/* These are Development Routes  */}
                         <Route path="/createprofile" element={<CreateProfile />} />
                         <Route path="/howtopage" element={<HowToPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
@@ -48,9 +67,6 @@ export default function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
-
-
-
         </AppProvider>
     );
 }
