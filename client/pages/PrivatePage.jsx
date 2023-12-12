@@ -12,21 +12,21 @@ export default function ProtectedPage() {
             const socialsResponseJson = await socialsResponse.json();
             // console.log('Socials Response',socialsResponse);
             // console.log('Socials JSON', socialsResponseJson); 
-            
+
             const reviewsResponse = await fetch('/api/review');
             const reviewsResponseJson = await reviewsResponse.json();
             // console.log('reviews Response',reviewsResponse);
             // console.log('reviews JSON', reviewsResponseJson); 
-            
+
             if (socialsResponseJson.result === "success" && reviewsResponseJson.result === "success") {
                 const socials = socialsResponseJson.payload;
                 const reviews = reviewsResponseJson.payload;
                 const newsFeed = [];
                 // console.log('Socials JSON', socialsResponseJson.payload);
                 // console.log('Reviews JSON', reviewsResponseJson.payload); 
-                socials.forEach(item => { newsFeed.push(item)});
-                reviews.forEach(item => { newsFeed.push(item)});
-                console.log('News Feed', newsFeed); 
+                socials.forEach(item => { newsFeed.push(item) });
+                reviews.forEach(item => { newsFeed.push(item) });
+                console.log('News Feed', newsFeed);
 
                 // const timestamps = newsFeed.map(item => item.createdAt);
                 // console.log(timestamps);
@@ -37,8 +37,8 @@ export default function ProtectedPage() {
                 const sortedNewsFeed = [...newsFeed].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
                 console.log('Sorted News Feed', sortedNewsFeed);
 
-
-            } 
+                setPosts(sortedNewsFeed);
+            }
 
         } catch (err) {
             console.error(err);
@@ -47,13 +47,15 @@ export default function ProtectedPage() {
 
     useEffect(() => {
         console.log('appCtx:', appCtx);
-        fetchPosts();        
+        fetchPosts();
     }, []);
 
     return (
         <>
-            <h1>Private Page</h1>
-            <p>This is an example of a page that would require an authenticated user.</p>
+            <div>
+                <h1>Private Page</h1>
+                <p>This is an example of a page that would require an authenticated user.</p>
+            </div>
         </>
     );
 }
