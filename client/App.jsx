@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppProvider from "./utils/AppProvider";
 import { ProtectedRoute } from "./components";
-import { HomePage, AuthPage, Logout, PrivatePage, Home } from "./pages/";
+import {  AuthPage, Logout, PrivatePage, Home } from "./pages/";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as React from "react";
 import CreateProfile from "./pages/CreateProfile";
