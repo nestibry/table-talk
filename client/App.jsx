@@ -25,19 +25,6 @@ import {
         } from "./pages/";
 
         
-        // import Navbar from "./components/Navbar"
-        // import CreatePost from "./pages/CreatePost";
-        
-        // import NewsFeed from "./pages/NewsFeed";
-        // import SearchPage from "./pages/SearchPage";
-        // import ProfilePage from "./pages/ProfilePage";
-        // import HowToPage from "./pages/HowToPage/HowToPage";
-        // import CreateProfile from "./pages/CreateProfile";
-        // import Header from "./components/Header/Header";
-        // import { Header } from './components/';
-
-
-
 export default function App() {
     return (
         <AppProvider>
@@ -49,16 +36,16 @@ export default function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/auth" element={<AuthPage type="login" />} />
                         <Route path="/signup" element={<AuthPage type="signup" />} />
+                        <Route path="/logout" element={<Logout />} />
 
                         {/* Protected Routes */}
                         <Route path="/feed" element={<ProtectedRoute><NewsFeed /></ProtectedRoute>} />
 
-                        <Route path="/logout" element={<Logout />} />
 
                         {/* These are Development Routes  */}
+                        <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/createprofile" element={<CreateProfile />} />
                         <Route path="/howtopage" element={<HowToPage />} />
-                        <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/newsfeed" element={<NewsFeed />} />
                         <Route path="/nav" element={<Navbar />} />
