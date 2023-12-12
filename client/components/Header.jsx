@@ -1,17 +1,17 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { useAppCtx } from "../../utils/AppProvider"
-import TTlogo from '/assets/TableTalk.png'
-
-
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useAppCtx } from "../../utils/AppProvider";
+import TTlogo from "/assets/TableTalk.png";
+import "./Header.css";
 
 export default function Header() {
-    const { user } = useAppCtx()
+  const { user } = useAppCtx();
 
-    return (
-        <>
-            <Navbar className="display-flex mx-auto">
+  return (
+    <>
+      <Navbar className="display-flex mx-auto">
         <Container className="" style={{ backgroundColor: "white", paddingTop: "5px" }}>
           <Navbar.Brand href="/">
             <img src={TTlogo} alt="TTlogo"></img>
@@ -42,6 +42,7 @@ export default function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-        </>
-    );
+   
+    </>
+  );
 }

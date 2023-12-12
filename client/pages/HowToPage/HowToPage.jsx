@@ -3,6 +3,8 @@ import "./HowToPage.css";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
+
 
 
 export default function HowToPage() {
@@ -12,75 +14,80 @@ export default function HowToPage() {
   //set up for 3 sec intervals
   const [refStepTwo, inViewStepTwo] = useInView({
     triggerOnce: true,
-    delay: 6000,
+    delay: 2000,
   });
 
   const [refStepThree, inViewStepThree] = useInView({
     triggerOnce: true,
-    delay: 9000,
+    delay: 6000,
   });
   const [refStepFour, inViewStepFour] = useInView({
     triggerOnce: true,
-    delay: 12000,
+    delay: 8000,
   });
   return (
     <>
-      <main className="how">
-      <h1 className="howto">Start TableTalking Today!</h1>
+      <main className="how" >
+      <h1 className="howto">Start {" "}
+  <span style={{ color: "#FFA6D7", fontStyle:"italic"  }}>Table</span>
+  <span style={{ color: "#C24646", fontStyle:"italic"  }}>Talking</span> Today!</h1>
       <br />
         
-          <Card
-
+          <Card style={{border: "none"}}
+           
             ref={refStepOne}
             className={`animated-card ${inViewStepOne ? "in-view" : ""}`}
+            animate={{ opacity: 1 }}
           >
-            <Card.Body className="stepOne">
+            <Card.Body className="stepOne" >
               <Card.Text>
-                Step 1
-                Sign up today by completing a quick profile.
+                <h2>Step 1</h2>
+                <p> Sign up today by completing a quick profile.</p>
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
           </Card>
           <br />
-          <Card
+          <Card style={{border: "none"}}
             ref={refStepTwo}
             className={`animated-card ${inViewStepTwo ? "in-view" : ""}`}
           >
             <Card.Body className="stepTwo">
               <Card.Text>
-                Step 2
-                Pick a status- Are you seeking new friends, a love connection,
-                or just here to find true food love!
+                <h2>Step 2</h2>
+                <p >Pick a status- Are you seeking new friends, a love connection, or just here to find true food love!</p>
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
           </Card>
           <br />
        
-          <Card
+          <Card style={{border: "none"}}
             ref={refStepThree}
             className={`animated-card ${inViewStepThree ? "in-view" : ""}`}
           >
             <Card.Body className="stepThree">
               <Card.Text>
-                Step 3
-                Once your profile is complete, start browsing the news feed for
-                new connections to people or food!
+                <h2>Step 3</h2>
+                <p>Once your profile is complete, start browsing the news feed for
+                new connections to people or food!</p>
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
           </Card>
           <br />
-          <Card
+          <Card style={{border: "none"}}
             ref={refStepFour}
             className={`animated-card ${inViewStepFour ? "in-view" : ""}`}
           >
             <Card.Body className="stepFour">
               <Card.Text>
-                Step 4
-                Make your first food post and start building your TableTalk
-                network!
+                <h2>Step 4</h2>
+                <p>Make your first food post and start building your TableTalk
+                network!</p>
+                <Button as={Link} to="/signup" variant="secondary" size="lg" style={{backgroundColor: "whitesmoke", color: "#070808", fontWeight: "bolder", alignContent: "center"}}>
+            Sign Up Now and Start TableTalking!
+          </Button>
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
@@ -88,11 +95,7 @@ export default function HowToPage() {
         
         <br />
 
-        <div className="d-grid gap-2">
-          <Button variant="secondary" size="lg">
-            Sing Up Now and Start TableTalking!
-          </Button>
-        </div>
+    
       </main>
     </>
   );

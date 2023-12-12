@@ -1,6 +1,6 @@
 .home {
-  background-color: whitesmoke;
-  color: black;
+  background-color:#070808;
+  color: white;
   margin: 0;
   padding: 0;
 }
@@ -18,21 +18,22 @@
 }
 
 .homecard {
-  background-color: #f5be27;
+  background-color: #FFA6D7;
   color: black;
-  font-size: 75%;
+  font-size: 80%;
   font-weight: bolder;
   padding: 10%;
+
 }
 
 
 .signUp {
-  background-color: #c24646 !important;
-  
+  /* background-color: #c24646 !important; */
+  justify-content: space-between;
 }
 
 .howBtn {
-  background-color: #ffa6d7 ;
+  /* background-color: #ffa6d7 !important; */
 }
 @media only screen and (max-width: 600px) {
   main {
