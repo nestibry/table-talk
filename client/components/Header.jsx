@@ -28,7 +28,7 @@ export default function Header() {
           >
             <Nav className="" style={{color: "#070808"}}>
               {user?._id !== undefined ? (
-                <Nav.Link href="/private" style={{color: "#070808",fontSize:"25px"}}>Profile Page</Nav.Link>
+                <Nav.Link href="/feed" style={{color: "#070808",fontSize:"25px"}}>Profile Page</Nav.Link>
               ) : (
                 <Nav.Link href="/signup"style={{color: "#070808", fontSize:"25px"}}>Sign Up</Nav.Link>
               )}
@@ -42,28 +42,7 @@ export default function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* <Navbar>
-        <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="justify-content-start"
-          >
-            <Nav className="">
-              {user?._id !== undefined ? (
-                <Nav.Link href="/private">Private Page</Nav.Link>
-              ) : (
-                <Nav.Link href="/signup">Sign Up</Nav.Link>
-              )}
-              {user?._id !== undefined ? (
-                <Nav.Link href="/logout">Logout</Nav.Link>
-              ) : (
-                <Nav.Link href="/auth">Login</Nav.Link>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
+   
     </>
   );
 }
