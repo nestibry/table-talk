@@ -126,9 +126,7 @@ export default function CreateProfile() {
 
                 <Form.Group className="mb-3" controlId="formProfileStatus">
                     <Form.Label>Profile Status</Form.Label>
-                    <Form.Select
-                        name="status"
-                        onChange={handleFormChange}>
+                    <Form.Select name="status" onChange={handleFormChange}>
                         <option></option>
                         <option>Looking for new friends</option>
                         <option>Looking for a romantic connection</option>
@@ -138,9 +136,7 @@ export default function CreateProfile() {
 
                 <Form.Group className="mb-3" controlId="formLocationState">
                     <Form.Label>State</Form.Label>
-                    <Form.Select
-                        name="location_state"
-                        onChange={handleFormChange}>
+                    <Form.Select name="location_state" onChange={handleFormChange}>
                         <option></option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -197,9 +193,7 @@ export default function CreateProfile() {
 
                 <Form.Group className="mb-3" controlId="formAge">
                     <Form.Label>Age</Form.Label>
-                    <Form.Select
-                        name="age"
-                        onChange={handleFormChange}>
+                    <Form.Select name="age" onChange={handleFormChange}>
                         <option></option>
                         <option>18-25</option>
                         <option>26-35</option>
@@ -211,9 +205,7 @@ export default function CreateProfile() {
 
                 <Form.Group className="mb-3" controlId="formPronoun">
                     <Form.Label>Pronoun</Form.Label>
-                    <Form.Select
-                        name="gender_identity"
-                        onChange={handleFormChange}>
+                    <Form.Select name="gender_identity" onChange={handleFormChange}>
                         <option></option>
                         <option>He/Him</option>
                         <option>She/Her</option>
