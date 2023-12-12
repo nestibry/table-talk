@@ -30,7 +30,7 @@ export default function App() {
 
                         <Route path="/private" element={
                                 <ProtectedRoute>
-                                    <PrivatePage />
+                                    <NewsFeed />
                                 </ProtectedRoute>
                         }/>
 
