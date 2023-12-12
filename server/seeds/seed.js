@@ -83,28 +83,28 @@ const commentSeedData = [
 
 const socialSeedData = [
   {
-    photo_id: "pancakes",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "Eating pancakes!",
     creator_id: "",
     liked_users: [],
     comments: [],
   },
   {
-    photo_id: "pizza",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "Eating pizza!",
     creator_id: "",
     liked_users: [],
     comments: [],
   },
   {
-    photo_id: "salmon",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "Eating salmon!",
     creator_id: "",
     liked_users: [],
     comments: [],
   },
   {
-    photo_id: "french toast",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "Eating french toast!",
     creator_id: "",
     liked_users: [],
