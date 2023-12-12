@@ -41,7 +41,7 @@ export default function Auth({usage="login"}){
 
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleFormSubmit}>
         <div>
           <h2>{ usage === "signup" ? "Signup" : "Login" }</h2>
@@ -57,7 +57,7 @@ export default function Auth({usage="login"}){
             </div>
           </div>
 
-          <button className="mt-2">Submit Info</button>
+          <button className="mt-3">Submit Info</button>
         </div>
       </form>
     </div>

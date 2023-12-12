@@ -13,6 +13,7 @@ import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
 export default function CreateProfile() {
 
+    
     const appCtx = useAppCtx();
     const [formData, setFormData] = useState({
         email: '',
@@ -24,6 +25,7 @@ export default function CreateProfile() {
         gender_identity: '',
         profile_pic: '',
     });
+
 
     const [imageUrl, setImageUrl] = useState("");
     const [isUploaded, setIsUploaded] = useState(false);
@@ -45,10 +47,10 @@ export default function CreateProfile() {
     };
 
 
-
     function handleFormChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
+
 
     async function handleFormSubmit(e) {
         e.preventDefault();
@@ -107,8 +109,8 @@ export default function CreateProfile() {
         form: "#upload-widget"
     });
 
-    console.log(imageUrl);
-    console.log(isUploaded);
+    // console.log(imageUrl);
+    // console.log(isUploaded);
     useEffect(() => {
         setFormData({ ...formData, profile_pic: imageUrl })
         console.log(formData);
@@ -118,6 +120,13 @@ export default function CreateProfile() {
 
     return (
         <>
+            <div className="mb-3">
+                <h3>Upload a Profile Pic!</h3>
+                <CloudinaryUploadWidget uwConfig={uwConfig} setImageUrl={setImageUrl} setIsUploaded={setIsUploaded} />
+            </div>
+
+            {isUploaded ? <p>Image uploaded!</p> : <p>No profile pic selected</p>}
+
             <Form onSubmit={handleFormSubmit}>
 
                 <Form.Group className="mb-3" controlId="formEmail">
@@ -253,14 +262,10 @@ export default function CreateProfile() {
                     </Form.Select>
                 </Form.Group>
 
-                <div>
-                    <h3>Upload a Profile Pic!</h3>
-                    <CloudinaryUploadWidget uwConfig={uwConfig} setImageUrl={setImageUrl} setIsUploaded={setIsUploaded} />
-                </div>
 
-                {isUploaded ? <p>Image uploaded!</p> : <p>No profile pic selected</p>}
 
-                <Button variant="primary" type="submit">
+
+                <Button className="mb-5" variant="primary" type="submit">
                     Create Profile
                 </Button>
 

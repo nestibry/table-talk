@@ -41,8 +41,8 @@ export default function HowToPage() {
           >
             <Card.Body className="stepOne" >
               <Card.Text>
-                <h2>Step 1</h2>
-                <p> Sign up today by completing a quick profile.</p>
+                Step 1 <br />
+                Sign up today by completing a quick profile.
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
@@ -54,8 +54,8 @@ export default function HowToPage() {
           >
             <Card.Body className="stepTwo">
               <Card.Text>
-                <h2>Step 2</h2>
-                <p >Pick a status- Are you seeking new friends, a love connection, or just here to find true food love!</p>
+                Step 2 <br />
+                Pick a status- Are you seeking new friends, a love connection, or just here to find true food love!
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
@@ -68,9 +68,9 @@ export default function HowToPage() {
           >
             <Card.Body className="stepThree">
               <Card.Text>
-                <h2>Step 3</h2>
-                <p>Once your profile is complete, start browsing the news feed for
-                new connections to people or food!</p>
+                Step 3 <br />
+                Once your profile is complete, start browsing the news feed for
+                new connections to people or food!
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
@@ -82,9 +82,10 @@ export default function HowToPage() {
           >
             <Card.Body className="stepFour">
               <Card.Text>
-                <h2>Step 4</h2>
-                <p>Make your first food post and start building your TableTalk
-                network!</p>
+                Step 4 <br />
+                Make your first food post and start building your TableTalk
+                network! <br />
+                
                 <Button as={Link} to="/signup" variant="secondary" size="lg" style={{backgroundColor: "whitesmoke", color: "#070808", fontWeight: "bolder", alignContent: "center"}}>
             Sign Up Now and Start TableTalking!
           </Button>
