@@ -36,7 +36,7 @@ export default function HowToPage() {
           >
             <Card.Body className="stepOne">
               <Card.Text>
-                <h2>Step 1</h2>
+                Step 1
                 Sign up today by completing a quick profile.
               </Card.Text>
             </Card.Body>
@@ -49,7 +49,7 @@ export default function HowToPage() {
           >
             <Card.Body className="stepTwo">
               <Card.Text>
-                <h2>Step 2</h2>
+                Step 2
                 Pick a status- Are you seeking new friends, a love connection,
                 or just here to find true food love!
               </Card.Text>
@@ -64,7 +64,7 @@ export default function HowToPage() {
           >
             <Card.Body className="stepThree">
               <Card.Text>
-                <h2>Step 3</h2>
+                Step 3
                 Once your profile is complete, start browsing the news feed for
                 new connections to people or food!
               </Card.Text>
@@ -78,7 +78,7 @@ export default function HowToPage() {
           >
             <Card.Body className="stepFour">
               <Card.Text>
-                <h2>Step 4</h2>
+                Step 4
                 Make your first food post and start building your TableTalk
                 network!
               </Card.Text>

@@ -65,8 +65,7 @@ export default function CreateProfile() {
             console.log(jsonResponse);
 
             if (response.ok) {
-                alert('Profile created');
-                // window.location.href = "/";
+                window.location.href = "/private";
             } else {
                 alert("Profile could not be created. \nTry using a different email, display name, or both.");
             }

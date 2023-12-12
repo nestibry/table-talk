@@ -28,7 +28,7 @@ export default function Auth({usage="login"}){
       const response = await query.json()
       console.log(response)
       if( response.result === "success" ){
-        window.location.href = "/"
+        window.location.href = "/private"
       }
     } catch(err){
       console.log(err.message)
