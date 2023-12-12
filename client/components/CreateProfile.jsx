@@ -25,6 +25,9 @@ export default function CreateProfile() {
         profile_pic: '',
     });
 
+    const [imageUrl, setImageUrl] = useState("");
+    const [isUploaded, setIsUploaded] = useState(false);
+
 
     const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i;
     const [isEmailValid, setIsEmailValid] = useState(true);
@@ -73,6 +76,44 @@ export default function CreateProfile() {
             console.error("Error: ", error);
         }
     };
+
+    // Replace with your own cloud name
+    const [cloudName] = useState("table-talk");
+    // Replace with your own upload preset
+    const [uploadPreset] = useState("profile_upload");
+
+    // Upload Widget Configuration
+    // Remove the comments from the code below to add
+    // additional functionality.
+    // Note that these are only a few examples, to see
+    // the full list of possible parameters that you
+    // can add see:
+    //   https://cloudinary.com/documentation/upload_widget_reference
+
+    const [uwConfig] = useState({
+        cloudName,
+        uploadPreset,
+        // cropping: true, //add a cropping step
+        // showAdvancedOptions: true,  //add advanced options (public_id and tag)
+        sources: ["local"], // restrict the upload sources to URL and local files
+        multiple: false,  //restrict upload to a single file
+        // folder: "user_images", //upload files to the specified folder
+        tags: ["users", "profile_pic"], //add the given tags to the uploaded files
+        // context: {alt: "user_uploaded"}, //add the given context data to the uploaded files
+        clientAllowedFormats: ["png", "jpeg"], //restrict uploading to image files only
+        maxImageFileSize: 2000000,  //restrict file size to less than 2MB
+        maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+        // theme: "purple", //change to a purple theme
+        form: "#upload-widget"
+    });
+
+    console.log(imageUrl);
+    console.log(isUploaded);
+    useEffect(() => {
+        setFormData({ ...formData, profile_pic: imageUrl })
+        console.log(formData);
+    }, [imageUrl])
+
 
 
     return (
@@ -212,11 +253,20 @@ export default function CreateProfile() {
                     </Form.Select>
                 </Form.Group>
 
+                <div>
+                    <h3>Upload a Profile Pic!</h3>
+                    <CloudinaryUploadWidget uwConfig={uwConfig} setImageUrl={setImageUrl} setIsUploaded={setIsUploaded} />
+                </div>
+
+                {isUploaded ? <p>Image uploaded!</p> : <p>No profile pic selected</p>}
+
                 <Button variant="primary" type="submit">
                     Create Profile
                 </Button>
 
             </Form>
+
+
 
         </>
     );
