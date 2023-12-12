@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react"
+import { useAppCtx } from "../utils/AppProvider"
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -10,45 +12,51 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
 export default function CreateProfile() {
+
+    const appCtx = useAppCtx();
+
     const [formData, setFormData] = useState({
         email: '',
         display_name: '',
         password: '',
-        profile_pic: '',
-        age: '',
+        status: '',
         location_state: '',
+        age: '',
         gender_identity: '',
-        status: ''
+        profile_pic: '',
     });
 
-    const handleFormChange = (e) => {
-        setFormData({...formData, [e.target.name]:e.target.value});
+    function handleFormChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    const handleFormSubmit = async (e) => {
+    async function handleFormSubmit(e) {
         e.preventDefault();
-
         console.log('Form Submitted:', formData);
 
-        // try {
-        //     const response = await fetch("your-server-endpoint", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify(formData),
-        //     });
+        try {
+            const response = await fetch('/api/user', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
 
-        //     if (response.ok) {
-        //         console.log("Your profile has been created!!!");
-        //     } else {
-        //         console.error("Profile not created!");
-        //     }
-        // } catch (error) {
-        //     console.error("Error!!!!!", error);
-        // }
+            console.log(response);
+            const jsonResponse = await response.json();
+            console.log(jsonResponse);
+
+            if (response.ok) {
+                alert('Profile created');
+                // window.location.href = "/";
+            } else {
+                alert("Profile could not be created. \nTry using a different email, display name, or both.");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+        }
     };
-
 
 
     return (
@@ -69,7 +77,7 @@ export default function CreateProfile() {
 
                 <Form.Group className="mb-3" controlId="formEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="name@example.com" />
+                    <Form.Control type="email" name='email' placeholder="name@example.com" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formDisplayName">
@@ -158,6 +166,16 @@ export default function CreateProfile() {
                         <option value="3">36-45</option>
                         <option value="4">46-60</option>
                         <option value="5">60+</option>
+                    </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formGenderIdentity">
+                    <Form.Label>Pronoun</Form.Label>
+                    <Form.Select name="gender_identity">
+                        <option></option>
+                        <option>He/Him</option>
+                        <option>She/Her</option>
+                        <option>They/Them</option>
                     </Form.Select>
                 </Form.Group>
 
