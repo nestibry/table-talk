@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -12,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ImportData from "./ImportData";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,121 +27,49 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Post({ type = "review" }) {
-  const [expanded, setExpanded] = React.useState(false);
+  const url = "/api/social";
+  const [data, setData] = useState([]);
+  const [creatorData, setCreatorData] = useState([]);
 
-  const user = {
-    display_name: "display_name",
-    avatarUrl: "https://www.w3schools.com/css/img_forest.jpg",
-  };
+  async function fetchInfo() {
+    const res = await fetch(url)
+    const tempData = await res.json()
 
-  const post = {
-    creator_id: {
-      email: "display_name",
-    },
-    createdAt: {
-      timestamp: "2 hours ago",
-    },
-  };
+    setData(tempData.payload)
+    // setData(data => {
+    //   setCreatorData(data.creator_id)
+    //   console.log(Object.values(data.comments))
+    //   const tempCommentData = Object.values(data.comments).map(item => {
+    //     return {
+    //       comment_body: item.comment_body,
+    //       display_name: item.creator_id.display_name,
+    //       profile_pic: item.creator_id.profile_pic,
+    //       status: item.creator_id.status,
+    //     }
+    //   })
+    //   setCommentData(tempCommentData)
+    //   return data;
+    // })
+    // console.log(data)
+  }
 
-  const postImage = "url/to/post/image.jpg";
+  console.log(data);
+  const posts = data.map(post => {
+    console.log(post.creator_id.display_name)
+    return <div key={post._id}>
+      <ImportData display_name={post.creator_id.display_name} description={post.description} comments={post.comments} ></ImportData>
+    </div>
+  })
+  // console.log(commentData[0]);
+  // console.log(usableCommentData);
 
-  const description = {
-    text: "This is where the user's caption will go.",
-  };
-
-  const comments = [
-    {
-      user: {
-        display_name: "display_name1",
-        avatarUrl: "url/to/avatar1.jpg",
-      },
-      text: "Let's connect!",
-    },
-    {
-      user: {
-        display_name: "display_name2",
-        avatarUrl: "url/to/avatar2.jpg",
-      },
-      text: "Food looks yummy!",
-    },
-  ];
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardHeader
-          avatar={<Avatar alt={user.display_name} src={user.avatarUrl} />}
-          action={
-            <Button onClick={() => console.log("Follow/Unfollow clicked")}>
-              {post.status === "Following" ? "Unfollow" : "Follow"}
-            </Button>
-          }
-        // I can not figure out how to get the following button to react the same way as it does in the search page //
-
-          title={post.creator_id.email}
-          subheader={post.createdAt.timestamp}
-        />
-        <CardMedia
-          component="img"
-          height="194"
-          image={postImage}
-          alt="Post Image"
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {description.text}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="like">
-            <ThumbUpIcon />
-          </IconButton>
-
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Comments</Typography>
-            {comments.map((comment, index) => (
-              <div key={index}>
-                <Avatar
-                  alt={comment.user.display_name}
-                  src={comment.user.avatarUrl}
-                />
-                <Typography variant="body2" color="text.secondary">
-                  <strong>{comment.user.display_name}:</strong> {comment.text}
-                </Typography>
-              </div>
-            ))}
-
-
-           /*  is this what you were talking about Bryan for the prop? It breaks the code when uncommented, so clearly I did it wrong */
-    
-
-            {/* {type === "review" && (
-              <div>
-                <Typography variant="body2" color="text.secondary">
-                  Restaurant: {review.restaurant_name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Location: {review.restaurant_city}
-                </Typography>
-              </div>
-            )} */}
-          </CardContent>
-        </Collapse>
-      </Card>
+      {posts}
     </>
   );
 }

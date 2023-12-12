@@ -37,7 +37,12 @@ function createToken(email, id) {
 // Declare the routes that point to the controllers above
 router.get("/", async (req, res) => {
   try {
-    const payload = await getAllUsers()
+    const payload = await getAllUsers();
+    payload.forEach(obj => {
+      obj.password = "";
+    })
+
+    console.log(payload)
     res.status(200).json({ result: "success", payload })
   } catch (err) {
     res.status(500).json({ result: "error", payload: err.message })
