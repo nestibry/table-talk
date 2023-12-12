@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppCtx } from "../utils/AppProvider";
 import PostCard from "../components/PostCard";
 
-export default function ProtectedPage() {
+export default function PrivatePage() {
     const appCtx = useAppCtx();
 
     const [posts, setPosts] = useState();
@@ -37,13 +37,16 @@ export default function ProtectedPage() {
 
     return (
         <div>
-            <h1>News Feed</h1>
+            <h1 style={{ textAlign: "center", fontSize: "50px", color: "#FFA6D7" }}>Discover a love story on a plate in the latest post – <br />
+                <span style={{ color: "#C24646" }}>Where food and dating find their perfect match!</span></h1>
+            <br />
+            
             {posts ? (
-                    posts.map(post => (
-                        <div className="mb-3">
-                            <PostCard key={post._id} post={post} />
-                        </div>
-                    ))
+                posts.map(post => (
+                    <div className="mb-3">
+                        <PostCard key={post._id} post={post} />
+                    </div>
+                ))
             ) : (
                 <p>Loading...</p>
             )}

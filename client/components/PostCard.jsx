@@ -30,42 +30,22 @@ export default function PostCard(props) {
 
     console.log(props.post);
 
-    const user = {
-        display_name: props.post?.creator_id?.display_name || 'Unknown',
-        avatarUrl: "https://www.w3schools.com/css/img_forest.jpg",
-    };
+    const formattedPostDate = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    }).format(new Date(props.post?.createdAt));
+    const display_name = props.post?.creator_id?.display_name || 'Unknown';
+    const avatarUrl = "https://www.w3schools.com/css/img_forest.jpg";
+    const postImage = "https://www.w3schools.com/css/img_forest.jpg";
+    const description = props.post?.description || '';
+    const restaurant_name = props.post?.restaurant_name || '';
+    const restaurant_city = props.post?.restaurant_city || '';
+    const comments = props.post?.comments;
 
-    const post = {
-        creator_id: {
-            email: props.post?.creator_id?.display_name || 'Unknown',
-        },
-        createdAt: {
-            timestamp: "2 hours ago",
-        },
-    };
-
-    const postImage = "url/to/post/image.jpg";
-
-    const description = {
-        text: props.post?.description || 'No Description',
-    };
-
-    const comments = [
-        {
-            user: {
-                display_name: "display_name1",
-                avatarUrl: "url/to/avatar1.jpg",
-            },
-            text: "Let's connect!",
-        },
-        {
-            user: {
-                display_name: "display_name2",
-                avatarUrl: "url/to/avatar2.jpg",
-            },
-            text: "Food looks yummy!",
-        },
-    ];
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -74,72 +54,49 @@ export default function PostCard(props) {
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
+
                 <CardHeader
-                    avatar={<Avatar alt={user.display_name} src={user.avatarUrl} />}
+                    title={display_name}
+                    subheader={formattedPostDate}
+                    avatar={<Avatar alt={display_name} src={avatarUrl} />}
                     action={
                         <Button onClick={() => console.log("Follow/Unfollow clicked")}>
-                            {post.status === "Following" ? "Unfollow" : "Follow"}
+                            {/* {post.status === "Following" ? "Unfollow" : "Follow"} */}
                         </Button>
                     }
-                    // I can not figure out how to get the following button to react the same way as it does in the search page //
+                />
 
-                    title={post.creator_id.email}
-                    subheader={post.createdAt.timestamp}
-                />
-                <CardMedia
-                    component="img"
-                    height="194"
-                    image={postImage}
-                    alt="Post Image"
-                />
+                <CardMedia component="img" height="200" image={postImage} alt="Post Image" />
+
                 <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                        {description.text}
-                    </Typography>
+                    <Typography variant="body2" color="text.secondary">{description}</Typography>
+                    <Typography variant="body2" color="text.secondary">{restaurant_name}</Typography>
+                    <Typography variant="body2" color="text.secondary">{restaurant_city}</Typography>
                 </CardContent>
+
+
                 <CardActions disableSpacing>
                     <IconButton aria-label="like">
                         <ThumbUpIcon />
                     </IconButton>
-
-                    <ExpandMore
-                        expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
+                    <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
                         <ExpandMoreIcon />
                     </ExpandMore>
                 </CardActions>
+
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Comments</Typography>
-                        {comments.map((comment, index) => (
-                            <div key={index}>
-                                <Avatar
-                                    alt={comment.user.display_name}
-                                    src={comment.user.avatarUrl}
-                                />
+
+                        {comments.map((comment) => (
+                            <div key={comment._id} className="mb-2">
+                                <Avatar alt={comment.creator_id} src='url/to/avatar.jpg' />
                                 <Typography variant="body2" color="text.secondary">
-                                    <strong>{comment.user.display_name}:</strong> {comment.text}
+                                    <strong>{comment.creator_id}:</strong> {comment.comment_body}
                                 </Typography>
                             </div>
                         ))}
 
-
-           /*  is this what you were talking about Bryan for the prop? It breaks the code when uncommented, so clearly I did it wrong */
-
-
-                        {/* {type === "review" && (
-              <div>
-                <Typography variant="body2" color="text.secondary">
-                  Restaurant: {review.restaurant_name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Location: {review.restaurant_city}
-                </Typography>
-              </div>
-            )} */}
                     </CardContent>
                 </Collapse>
             </Card>
