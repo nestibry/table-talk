@@ -115,7 +115,7 @@ const socialSeedData = [
 
 const reviewSeedData = [
   {
-    photo_id: "soup",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "The soup was good!",
     restaurant_name: "Local Soup",
     restaurant_city: "Mankato",
@@ -125,7 +125,7 @@ const reviewSeedData = [
     comments: [],
   },
   {
-    photo_id: "burger",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "The burger was good!",
     restaurant_name: "Local Burger",
     restaurant_city: "Minneapolis",
@@ -135,7 +135,7 @@ const reviewSeedData = [
     comments: [],
   },
   {
-    photo_id: "pasta",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "The pasta was good!",
     restaurant_name: "Local Pasta",
     restaurant_city: "Des Moines",
@@ -145,7 +145,7 @@ const reviewSeedData = [
     comments: [],
   },
   {
-    photo_id: "ice cream",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
     description: "The ice cream was good!",
     restaurant_name: "Local Ice Cream",
     restaurant_city: "San Diego",
