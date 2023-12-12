@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 // import { Auth } from '..';
 import dinnerdate from "/images/dinnerdate.png";
+import { Link } from 'react-router-dom';
 
 import "./HomePage.css";
 import HowToPage from "../HowToPage/HowToPage";
@@ -17,10 +18,9 @@ export default function HomePage() {
     <>
   <main className="home">
   <h1 className="welcome">
-          Welcome to{" "}
-          <span style={{ color: "#FFA6D7", fontStyle: "italic" }}>
-            TableTalk
-          </span>
+  Welcome to{" "}
+  <span style={{ color: "#FFA6D7", fontStyle:"italic" }}>Table</span>
+  <span style={{ color: "#C24646", fontStyle:"italic"  }}>Talk</span>
         </h1>
         <br />
 
@@ -47,16 +47,19 @@ export default function HomePage() {
         </motion.h2>
         <br />
         
-        <Card >
-          <Card.Body className="homecard">
+        <Card style={{border: "none", borderRadius: "15px", overflow: "hidden"}}>
+          <Card.Body className="homecard" >
             <Row>
-              <Col xs={12} md={6}>
+              <Col xs={12} md={7}>
                 <p className="intro" style={{color:"#070808"}}> 
                   Want to spice up your social life? Our app is designed for
                   food enthusiasts seeking both delicious meals and meaningful
-                  connections. Discover must-try restaurants, swipe through
+                  connections. <br />
+                  <br />
+                  Discover must-try restaurants, swipe through
                   profiles of like-minded individuals, and turn every bite into
-                  an opportunity for romance or friendship. Say goodbye to
+                  an opportunity for romance or friendship. <br />
+                  <br />Say goodbye to
                   dining alone; join TableTalk for a tasty adventure in food and
                   connection!
                 </p>
@@ -64,19 +67,21 @@ export default function HomePage() {
               </Col>
               <Col
                 xs={12}
-                md={6}
+                md={5}
                 className="d-flex flex-column align-items-center"
               >
-                <Image style={{backgroundColor: "transparent", border:"none", height:"60%", width:"60%" }} className="dinnerdate" src={dinnerdate} thumbnail />
+                <Image style={{backgroundColor: "transparent", border:"none", height:"80%", width:"80%", paddingTop: "10px" }} className="dinnerdate" src={dinnerdate} thumbnail />
                 <br />
                 <br />
-                <div className="mb-2 ">
-                  <Button className="signUp" variant="primary" size="lg">
-                    Sign Up
+                <div className="mb-2 " >
+                  <Button as={Link} to="/signup" className="signUp" variant="primary" size="lg"
+                  style={{marginRight: "20px", backgroundColor: "#C24646"}}>
+                    Ready to Sign Up
                   </Button>{" "}
-                  <ScrollLink to="howToPage" smooth duration={500}>
-                    <Button className="howbtn" variant="light" size="lg">
-                      How it Works
+             
+                  <ScrollLink to="howToPage" smooth duration={500} >
+                    <Button className="howbtn" variant="light" size="lg" style={{backgroundColor: "#F5BE27"}}>
+                      SeeHow it Works
                     </Button>
                   </ScrollLink>
   

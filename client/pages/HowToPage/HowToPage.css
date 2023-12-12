@@ -1,36 +1,40 @@
 .how {
-  background-color: whitesmoke;
-  color: black;
+  background-color: #070808;
+  color: white;
   margin: 0;
   padding: 0;
 }
 .howto {
   font-size: 500%;
   font-weight: 900;
-  color: #070808;
+  
   text-align: center;
   padding-top: 10%;
   
 }
 
 .stepOne, .stepTwo, .stepThree, .stepFour {
- border: none !important;
+ border: transparent  !important;
+ color:#070808 !important;
+ font-size: 40px;
+ text-align: center;
 }
+
 .stepOne {
-  background-color: #ffa6d7;
+  background-color: #F5BE27;
 
 }
 
 .stepTwo {
-  background-color: #c24646;
+  background-color:  #FFA6D7
 }
 
 .stepThree {
-  background-color: #f5be27;
+  background-color: #F57C36;
 }
 
 .stepFour {
-  background-color:#F57C36 ;
+  background-color:#C24646 ;
 }
 .animated-card {
   opacity: 0;
@@ -41,4 +45,7 @@
 .animated-card.in-view {
   opacity: 1;
   transform: translateY(0);
+}
+.d-grid {
+  background-color: #ffa6d7 !important;
 }
