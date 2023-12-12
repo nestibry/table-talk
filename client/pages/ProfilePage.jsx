@@ -105,6 +105,8 @@ export default function CreateProfile() {
             name="email"
             placeholder="name@example.com"
             required
+            value={formData.email}
+            onChange={handleFormChange}
           />
         </Form.Group>
 
@@ -114,21 +116,29 @@ export default function CreateProfile() {
             type="text"
             name="display_name"
             placeholder="YourDisplayName"
+            value={formData.display_name}
+            onChange={handleFormChange}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="password"
+          //type should hide password unless user is editing
+            type={isEditingPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
+            value={formData.password}
+            onChange={handleFormChange}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formProfileStatus">
           <Form.Label>Profile Status</Form.Label>
-          <Form.Select name="status">
+          <Form.Select 
+          name="status"
+          value={formData.status}
+          onChange={handleFormChange}>
             <option>Select Status</option>
             <option value="1">Looking for new friends</option>
             <option value="2">Looking for a romantic connection</option>
@@ -138,7 +148,9 @@ export default function CreateProfile() {
 
         <Form.Group className="mb-3" controlId="formLocationState">
           <Form.Label>State</Form.Label>
-          <Form.Select name="location_state">
+          <Form.Select name="location_state"
+          value={formData.location_state}
+          onChange={handleFormChange}>
             <option value="">Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -195,19 +207,24 @@ export default function CreateProfile() {
 
         <Form.Group className="mb-3" controlId="formAge">
           <Form.Label>Age</Form.Label>
-          <Form.Select name="age">
+          <Form.Select 
+          name="age"
+          value={formData.age}
+          onChange={handleFormChange}>
             <option>Select Age Range</option>
-            <option value="1">He/Him</option>
-            <option value="2">She/Her</option>
-            <option value="3">They/Them</option>
+            <option value="1">18-25</option>
+            <option value="2">26-35</option>
+            <option value="3">26-45</option>
             <option value="4">46-60</option>
             <option value="5">60+</option>
           </Form.Select>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formPronoun">
+        <Form.Group className="mb-3" controlId="formGender">
           <Form.Label>Pronouns</Form.Label>
-          <Form.Select name="age">
+          <Form.Select 
+          name="gender"
+          value={formData.gender_identity}>
             <option>Select Pronoun</option>
             <option value="1">He/Him</option>
             <option value="2">She/Her</option>
