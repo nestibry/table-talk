@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useAppCtx } from "../utils/AppProvider"
 
 
-export default function Auth({usage="signup"}){
+export default function Auth({usage="login"}){
 
   const appCtx = useAppCtx()
 
@@ -28,7 +28,7 @@ export default function Auth({usage="signup"}){
       const response = await query.json()
       console.log(response)
       if( response.result === "success" ){
-        window.location.href = "/"
+        window.location.href = "/feed"
       }
     } catch(err){
       console.log(err.message)
