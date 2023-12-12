@@ -1,9 +1,8 @@
 import Container from "react-bootstrap/esm/Container";
-import Post from "../components/Post";
 import React from "react";
-
 import { useEffect, useState } from "react";
 import { useAppCtx } from "../utils/AppProvider";
+
 import PostCard from "../components/PostCard";
 
 export default function NewsFeed() {
@@ -37,6 +36,7 @@ export default function NewsFeed() {
     }
 
     useEffect(() => {
+        console.log('User:', appCtx.user);
         fetchPosts();
     }, []);
 

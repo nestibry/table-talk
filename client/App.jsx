@@ -24,25 +24,31 @@ export default function App() {
                 <div className="container pt-5">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
-                        <Route path="/auth" element={<AuthPage type = "login"/>} />
-                        <Route path="/signup" element={<AuthPage type = "signup"/>} />
+                        <Route path="/auth" element={<AuthPage type="login" />} />
+                        <Route path="/signup" element={<AuthPage type="signup" />} />
 
 
                         <Route path="/private" element={
-                                <ProtectedRoute>
-                                    <NewsFeed />
-                                </ProtectedRoute>
-                        }/>
+                            <ProtectedRoute>
+                                <NewsFeed />
+                            </ProtectedRoute>
+                        } />
+
+                        <Route path="/feed" element={
+                            <ProtectedRoute>
+                                <NewsFeed />
+                            </ProtectedRoute>
+                        } />
 
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/createprofile" element={<CreateProfile />} />
                         <Route path="/howtopage" element={<HowToPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/search" element={<SearchPage />} />
-                      <Route path ="/newsfeed" element= {<NewsFeed />} />
-            <Route path ="/nav" element = {<Navbar />} />
-     
-          </Routes>
+                        <Route path="/newsfeed" element={<NewsFeed />} />
+                        <Route path="/nav" element={<Navbar />} />
+
+                    </Routes>
                 </div>
             </BrowserRouter>
 
