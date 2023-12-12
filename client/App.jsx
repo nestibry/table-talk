@@ -16,40 +16,38 @@ import Navbar from "./components/Navbar"
 
 
 export default function App() {
-  return (
-    <AppProvider>
-   
-      <BrowserRouter>
-        <Header />
-        <div className="container pt-5">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/auth" element={<AuthPage />} />
-          
+    return (
+        <AppProvider>
 
-            <Route
-              path="/private"
-              element={
-                <ProtectedRoute>
-                  <PrivatePage />
-                </ProtectedRoute>
-              }
-            />
+            <BrowserRouter>
+                <Header />
+                <div className="container pt-5">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/auth" element={<AuthPage type="login" />} />
+                        <Route path="/signup" element={<AuthPage type="signup" />} />
 
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/createprofile" element={<CreateProfile />} />
-            <Route path ="/howtopage" element={<HowToPage />} />
-            <Route path ="/profile" element={<ProfilePage />} />
-            <Route path ="/search" element={<SearchPage />} />
-            <Route path ="/newsfeed" element= {<NewsFeed />} />
-            <Route path ="/nav" element = {<Navbar />} />
-     
-          </Routes>
-        </div>
-      </BrowserRouter>
-   
- 
-      
-    </AppProvider>
-  );
+
+                        <Route path="/feed" element={
+                            <ProtectedRoute>
+                                <NewsFeed />
+                            </ProtectedRoute>
+                        } />
+
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/createprofile" element={<CreateProfile />} />
+                        <Route path="/howtopage" element={<HowToPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/search" element={<SearchPage />} />
+                        <Route path="/newsfeed" element={<NewsFeed />} />
+                        <Route path="/nav" element={<Navbar />} />
+
+                    </Routes>
+                </div>
+            </BrowserRouter>
+
+
+
+        </AppProvider>
+    );
 }
