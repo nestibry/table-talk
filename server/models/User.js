@@ -21,7 +21,7 @@ const userSchema = new Schema({
   },
   profile_pic: {
     type: String,
-    default: "default"
+    default: "https://res.cloudinary.com/table-talk/image/upload/v1702401426/table-talk/profile_pics/default.png"
   },
   age: {
     type: String
