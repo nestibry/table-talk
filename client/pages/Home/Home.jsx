@@ -8,12 +8,12 @@ import Button from "react-bootstrap/Button";
 import dinnerdate from "/images/dinnerdate.png";
 import { Link } from 'react-router-dom';
 
-// import "./HomePage.css";
+import "./Home.css";
 import HowToPage from "../HowToPage/HowToPage";
 import { Link as ScrollLink } from "react-scroll";
 import { motion } from "framer-motion";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
   <main className="home">

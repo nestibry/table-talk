@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppProvider from "./utils/AppProvider";
 import { ProtectedRoute } from "./components";
-import { HomePage, AuthPage, Logout, PrivatePage } from "./pages/";
+import { HomePage, AuthPage, Logout, PrivatePage, Home } from "./pages/";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as React from "react";
 import CreateProfile from "./pages/CreateProfile";
@@ -16,6 +16,7 @@ import CreatePost from "./pages/CreatePost";
 
 
 
+
 export default function App() {
     return (
         <AppProvider>
@@ -24,7 +25,7 @@ export default function App() {
                 <Header />
                 <div className="container pt-5">
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/auth" element={<AuthPage type="login" />} />
                         <Route path="/signup" element={<AuthPage type="signup" />} />
 
