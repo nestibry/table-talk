@@ -28,12 +28,6 @@ export default function App() {
                         <Route path="/signup" element={<AuthPage type="signup" />} />
 
 
-                        <Route path="/private" element={
-                            <ProtectedRoute>
-                                <NewsFeed />
-                            </ProtectedRoute>
-                        } />
-
                         <Route path="/feed" element={
                             <ProtectedRoute>
                                 <NewsFeed />
