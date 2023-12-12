@@ -2,12 +2,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useAppCtx } from "../utils/AppProvider"
+import { useAppCtx } from "../../utils/AppProvider"
 import TTlogo from '/assets/TableTalk.png'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
-import '../public/assets/css/Header.css'
-import NavBar from './Navbar'
+import './Header.css'
+
 
 export default function Header() {
     const { user } = useAppCtx()
