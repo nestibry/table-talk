@@ -34,11 +34,15 @@ export default function NewsFeed() {
             console.error(err);
         }
     }
-
+    console.log('User:', appCtx.user);
     useEffect(() => {
-        console.log('User:', appCtx.user);
+        // console.log('User:', appCtx.user);
         fetchPosts();
     }, []);
+
+    useEffect(() => {
+        console.log('Posts:', posts);
+    }, [posts]);
 
 
     return (
@@ -46,20 +50,16 @@ export default function NewsFeed() {
             <h1 style={{ textAlign: "center", fontSize: "50px", color: "#FFA6D7" }}>Discover a love story on a plate in the latest post – <br />
                 <span style={{ color: "#C24646" }}>Where food and dating find their perfect match!</span></h1>
             <br />
-            <Container>
 
-                {posts ? (
-                    posts.map(post => (
-                        <div className="mb-3">
-                            <PostCard key={post._id} post={post} />
-                        </div>
-                    ))
-                ) : (
-                    <p>Loading...</p>
-                )}
-
-            </Container>
-
+            {posts ? (
+                posts.map(post => (
+                    <div key={post._id} className="mb-3">
+                        <PostCard  post={post} />
+                    </div>
+                ))
+            ) : (
+                <p>Loading...</p>
+            )}
 
         </>
     );
