@@ -21,20 +21,20 @@
 }
 
 .stepOne {
-  background-color: #ffa6d7;
+  background-color: #F5BE27;
 
 }
 
 .stepTwo {
-  background-color: #c24646;
+  background-color:  #FFA6D7
 }
 
 .stepThree {
-  background-color: #f5be27;
+  background-color: #F57C36;
 }
 
 .stepFour {
-  background-color:#F57C36 ;
+  background-color:#C24646 ;
 }
 .animated-card {
   opacity: 0;

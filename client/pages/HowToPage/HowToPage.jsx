@@ -3,6 +3,7 @@ import "./HowToPage.css";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
 
 
 
@@ -84,8 +85,8 @@ export default function HowToPage() {
                 <h2>Step 4</h2>
                 <p>Make your first food post and start building your TableTalk
                 network!</p>
-                <Button variant="secondary" size="lg" style={{backgroundColor: "whitesmoke", color: "#070808", fontWeight: "bolder", alignContent: "center"}}>
-            Sing Up Now and Start TableTalking!
+                <Button as={Link} to="/CreateProfile" variant="secondary" size="lg" style={{backgroundColor: "whitesmoke", color: "#070808", fontWeight: "bolder", alignContent: "center"}}>
+            Sign Up Now and Start TableTalking!
           </Button>
               </Card.Text>
             </Card.Body>

@@ -30,7 +30,7 @@ export default function Header() {
               {user?._id !== undefined ? (
                 <Nav.Link href="/private" style={{color: "#070808",fontSize:"25px"}}>Profile Page</Nav.Link>
               ) : (
-                <Nav.Link href="/signup"style={{color: "#070808"}}>Sign Up</Nav.Link>
+                <Nav.Link href="/signup"style={{color: "#070808", fontSize:"25px"}}>Sign Up</Nav.Link>
               )}
 
               {user?._id !== undefined ? (

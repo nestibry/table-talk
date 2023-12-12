@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 // import { Auth } from '..';
 import dinnerdate from "/images/dinnerdate.png";
+import { Link } from 'react-router-dom';
 
 import "./HomePage.css";
 import HowToPage from "../HowToPage/HowToPage";
@@ -73,7 +74,7 @@ export default function HomePage() {
                 <br />
                 <br />
                 <div className="mb-2 " >
-                  <Button className="signUp" variant="primary" size="lg"
+                  <Button as={Link} to="/CreateProfile" className="signUp" variant="primary" size="lg"
                   style={{marginRight: "20px", backgroundColor: "#C24646"}}>
                     Ready to Sign Up
                   </Button>{" "}
