@@ -46,6 +46,7 @@ export default function PostCard(props) {
     const restaurant_city = props.post?.restaurant_city || '';
     const comments = props.post?.comments;
 
+    console.log('comments: ', comments);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -88,14 +89,14 @@ export default function PostCard(props) {
                 <CardContent>
                     <Typography paragraph>Comments</Typography>
 
-                    {/* {comments.map((comment) => (
-                        <div key={comment._id} className="mb-2">
-                            <Avatar alt={comment.creator_id} src='url/to/avatar.jpg' />
+                    {comments.map((comment) => (
+                        <div key={comment.comment_id} className="mb-2">
+                            <Avatar alt={comment.creator_id.display_name} src={comment.creator_id.profile_pic} />
                             <Typography variant="body2" color="text.secondary">
-                                <strong>{comment.creator_id}:</strong> {comment.comment_body}
+                                <strong>{comment.creator_id.display_name}:</strong> {comment.comment_body}
                             </Typography>
                         </div>
-                    ))} */}
+                    ))}
 
                 </CardContent>
             </Collapse>
