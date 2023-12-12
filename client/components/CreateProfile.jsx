@@ -161,7 +161,7 @@ export default function CreateProfile() {
                     <Form.Label>Age</Form.Label>
                     <Form.Select name="age">
                         <option>Select Age Range</option>
-                        <option value="1">18-25</option>
+                        <option>18-25</option>
                         <option value="2">26-35</option>
                         <option value="3">36-45</option>
                         <option value="4">46-60</option>
@@ -169,7 +169,7 @@ export default function CreateProfile() {
                     </Form.Select>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formGenderIdentity">
+                <Form.Group className="mb-3" controlId="formPronoun">
                     <Form.Label>Pronoun</Form.Label>
                     <Form.Select name="gender_identity">
                         <option></option>
