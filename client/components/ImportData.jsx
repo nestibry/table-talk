@@ -13,7 +13,6 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ImportData from "./ImportData";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,45 +25,41 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function Post({ type = "review", resName }) {
+export default function ImportData(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const user = {
-    display_name: "display_name",
-    avatarUrl: "https://www.w3schools.com/css/img_forest.jpg",
+    display_name: props.display_name,
+    avatarUrl: "https://res.cloudinary.com/table-talk/image/upload/v1702360252/x2cnoqakqyoie7ly6sgr.png",
   };
 
   const post = {
     creator_id: {
-      email: "display_name",
+      email: props.display_name,
     },
     createdAt: {
       timestamp: "2 hours ago",
     },
   };
 
-  const postImage = "url/to/post/image.jpg";
+  const postImage = "https://www.w3schools.com/css/img_forest.jpg";
 
   const description = {
-    text: "This is where the user's caption will go.",
+    text: props.description,
   };
 
-  const comments = [
-    {
+  const comments = props.comments.map(comment => {
+    return {
       user: {
-        display_name: "display_name1",
-        avatarUrl: "url/to/avatar1.jpg",
+        display_name: comment.creator_id.display_name,
+        avatarUrl: "https://www.w3schools.com/css/img_forest.jpg",
       },
-      text: "Let's connect!",
-    },
-    {
-      user: {
-        display_name: "display_name2",
-        avatarUrl: "url/to/avatar2.jpg",
-      },
-      text: "Food looks yummy!",
-    },
-  ];
+      text: comment.comment_body,
+    }
+  });
+
+
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -72,6 +67,7 @@ export default function Post({ type = "review", resName }) {
 
   return (
     <>
+      {/* <ImportData></ImportData> */}
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={<Avatar alt={user.display_name} src={user.avatarUrl} />}
@@ -96,16 +92,6 @@ export default function Post({ type = "review", resName }) {
             {description.text}
           </Typography>
         </CardContent>
-        {type === "review" && (
-          <div>
-            <Typography variant="body2" color="text.secondary">
-              Restaurant: {resName}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Location:
-            </Typography>
-          </div>
-        )}
         <CardActions disableSpacing>
           <IconButton aria-label="like">
             <ThumbUpIcon />
@@ -135,6 +121,20 @@ export default function Post({ type = "review", resName }) {
               </div>
             ))}
 
+
+           /*  is this what you were talking about Bryan for the prop? It breaks the code when uncommented, so clearly I did it wrong */
+
+
+            {/* {type === "review" && (
+              <div>
+                <Typography variant="body2" color="text.secondary">
+                  Restaurant: {review.restaurant_name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Location: {review.restaurant_city}
+                </Typography>
+              </div>
+            )} */}
           </CardContent>
         </Collapse>
       </Card>
