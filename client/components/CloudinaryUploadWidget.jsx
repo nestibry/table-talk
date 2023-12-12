@@ -33,7 +33,11 @@ function CloudinaryUploadWidget({ uwConfig, setImageUrl, setIsUploaded }) {
           if (!error && result && result.event === "success") {
             // console.log(result)
             console.log("Done! Here is the image info: ", result.info);
-            setImageUrl(result.info.url);
+            const coords = result.info.coordinates.custom[0];
+            console.log(coords);
+            const url = `https://res.cloudinary.com/table-talk/image/upload/x_${coords[0]},y_${coords[1]},w_${coords[2]},h_${coords[3]},c_crop/${result.info.path}`
+            // 
+            setImageUrl(url);
             setIsUploaded(true);
           }
         }
