@@ -39,7 +39,7 @@ export default function PostCard(props) {
         hour12: true,
     }).format(new Date(props.post?.createdAt));
     const display_name = props.post?.creator_id?.display_name || 'Unknown';
-    const avatarUrl = "https://www.w3schools.com/css/img_forest.jpg";
+    const avatarUrl = props.post?.creator_id?.profile_pic;
     const postImage = props.post?.photo_id ;
     const description = props.post?.description || '';
     const restaurant_name = props.post?.restaurant_name || '';
