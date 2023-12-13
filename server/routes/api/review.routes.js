@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // Import any controllers needed here
-const { getAllReviews, getReviewById, createReview, createComment, updateReviewById, deleteReviewById } = require('../../controllers/review.controller');
+const { getAllReviews, getReviewById, getReviewByUserId, createReview, createComment, updateReviewById, deleteReviewById } = require('../../controllers/review.controller');
 
 // Declare the routes that point to the controllers above
 router.get("/", async (req, res) => {
@@ -16,6 +16,15 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const payload = await getReviewById(req.params.id)
+    res.status(200).json({ result: "success", payload })
+  } catch (err) {
+    res.status(500).json({ result: "error", payload: err.message })
+  }
+})
+
+router.get("/user/:id", async (req, res) => {
+  try {
+    const payload = await getReviewByUserId(req.params.id)
     res.status(200).json({ result: "success", payload })
   } catch (err) {
     res.status(500).json({ result: "error", payload: err.message })
