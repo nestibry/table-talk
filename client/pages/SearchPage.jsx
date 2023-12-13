@@ -12,15 +12,14 @@ import Search from "../components/Search";
 
 
 export default function SearchPage() {
-  const userId = "65789b2d582835f850ee618a"
   const [data, setData] = useState([]);
 
-  const [status, setStatus] = useState('Not Following');
+  // const [status, setStatus] = useState('Not Following');
   const [dropDownValue, setDropDownValue] = useState("Filter By: All Users")
 
-  const [userData, setUserData] = useState("");
-
   const appCtx = useAppCtx();
+
+  const [userId, setUserId] = useState(appCtx.user._id);
 
   async function postInfo(searchCriteria, isFollowing) {
     const res = await fetch(`/api/user/search/${userId}`, {
@@ -34,7 +33,6 @@ export default function SearchPage() {
       }
     })
     const postData = await res.json()
-    console.log(postData.payload)
     setData(postData.payload);
   }
 
@@ -56,24 +54,17 @@ export default function SearchPage() {
 
     postInfo(searchInputElem.value, isFollowing);
 
-    console.log(data);
-    console.log(isFollowing)
-
-    // console.log(e);
-    // console.log(filterByElem.textContent);
-    // console.log(searchInputElem.value);
   }
 
   function changeDropDownValue(e) {
     setDropDownValue("Filter By: " + e.target.textContent)
   }
 
-
   useEffect(() => {
-    console.log(appCtx.user._id);
-  }, []);
+    if (appCtx?.user?._id) setUserId(appCtx.user._id || "");
+  }, [appCtx.user]);
 
-  //need to add in filter by calls
+  if (!userId) return (<></>);
   return (
     <>
       <h1>Search for TableTalkers</h1>

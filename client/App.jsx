@@ -46,13 +46,13 @@ export default function App() {
 
 
                         {/* These are Development Routes  */}
-                        <Route path="/profile" element={<ProfilePage />} />
+                        {/* <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/createprofile" element={<CreateProfile />} />
                         <Route path="/howtopage" element={<HowToPage />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/newsfeed" element={<NewsFeed />} />
                         <Route path="/nav" element={<Navbar />} />
-                        <Route path="createpost" element={<CreatePost />} />
+                        <Route path="createpost" element={<CreatePost />} /> */}
 
                     </Routes>
                 </div>
