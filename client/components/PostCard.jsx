@@ -29,7 +29,7 @@ const ExpandMore = styled((props) => {
 export default function PostCard(props) {
   const [expanded, setExpanded] = useState(false);
 
-  console.log(props)
+  
 
   const formattedPostDate = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
