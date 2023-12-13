@@ -19,10 +19,10 @@ const reviewSchema = new Schema({
     type: String,
     required: true,
   },
-  // is_recommended: {
-  //   type: Boolean,
-  //   required: true,
-  // },
+  is_recommended: {
+    type: Boolean,
+    // required: true,
+  },
   creator_id: {
     type: Schema.Types.ObjectId,
     ref: 'User',
