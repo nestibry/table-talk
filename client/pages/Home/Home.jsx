@@ -7,13 +7,20 @@ import Button from "react-bootstrap/Button";
 // import { Auth } from '..';
 import dinnerdate from "/images/dinnerdate.png";
 import { Link } from 'react-router-dom';
-
+import React, { useState } from 'react';
 import "./Home.css";
 import HowToPage from "../HowToPage/HowToPage";
 import { Link as ScrollLink } from "react-scroll";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const [showHowToPage, setShowHowToPage] = useState(false);
+
+  const handleSeeHowItWorksClick = () => {
+    setShowHowToPage(true);
+  };
+
+ 
   return (
     <>
   <main className="home">
@@ -47,7 +54,7 @@ export default function Home() {
         </motion.h2>
         <br />
         
-        <Card style={{border: "none", borderRadius: "15px", overflow: "hidden"}}>
+        <Card style={{border: "20px solid #F5BE27", overflow: "hidden", borderRadius: "75px"  }}>
           <Card.Body className="homecard" >
             <Row>
               <Col xs={12} md={7}>
@@ -79,9 +86,9 @@ export default function Home() {
                     Ready to Sign Up
                   </Button>{" "}
              
-                  <ScrollLink to="howToPage" smooth duration={500} >
-                    <Button className="howbtn" variant="light" size="lg" style={{backgroundColor: "#F5BE27"}}>
-                      SeeHow it Works
+                  <ScrollLink to="howToPage" smooth duration={500} offset={-50} >
+                    <Button onClick={handleSeeHowItWorksClick}  className="howbtn" variant="light" size="lg" style={{backgroundColor: "#F5BE27"}}>
+                      See How it Works
                     </Button>
                   </ScrollLink>
   
@@ -90,12 +97,17 @@ export default function Home() {
             </Row>
           </Card.Body>
         </Card>
+        {/* <Container id="howToPage">
+          <HowToPage />
+        </Container> */}
+        {/* <Auth /> */}
+        {showHowToPage && (
         <Container id="howToPage">
           <HowToPage />
         </Container>
-        {/* <Auth /> */}
+      )}
   </main>
-        
+
 
     </>
   );
