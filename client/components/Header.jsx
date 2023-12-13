@@ -36,12 +36,13 @@ export default function Header() {
                                     <Nav.Link href="/feed" style={{ color: "#070808", }}>
                                         <img src={Home} alt='feed' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
-                                    <Nav.Link href="/feed" style={{ color: "#070808" }}>
+                                    <Nav.Link href="/search" style={{ color: "#070808" }}>
                                         <img src={Search} alt='search' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
-                                    <Nav.Link href="/feed" style={{ color: "#070808" }}>
-                                        <img src={Profile} alt='profile' style={{ height: "50px", width: "50px" }}></img>
+                                    <Nav.Link href="/userprofile" style={{ color: "#070808" }}>
+                                        <img src={Profile} alt='user profile' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
+                                    <Nav.Link href="/post" style={{ color: "#070808", fontSize: "25px" }}>Post</Nav.Link>
                                     <Nav.Link href="/logout" style={{ color: "#070808", fontSize: "25px" }}>Logout</Nav.Link>
                                 </>
                             ) : (
