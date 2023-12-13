@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-// import Typography from '@mui/material/Typography';
 import { Button, TextField } from "@mui/material";
 import CloudinaryUploadWidget from "../components/CloudinaryUploadWidget";
-// import { set } from "mongoose";
+import { useAppCtx } from "../utils/AppProvider";
 
 export default function CreatePost() {
+    const appCtx = useAppCtx();
+
     const [postContent, setPostContent] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [isUploaded, setIsUploaded] = useState(false);
     const [restaurantName, setRestaurantName] = useState("");
     const [restaurantCity, setRestaurantCity] = useState("");
+
+    const [userId, setUserId] = useState("");
+
+    useEffect(() => {
+        if (appCtx?.user?._id) setUserId(appCtx.user._id || "");
+    }, [appCtx.user]);
 
     // Replace with your own cloud name
     const [cloudName] = useState("table-talk");
@@ -45,15 +52,8 @@ export default function CreatePost() {
         singleUploadAutoClose: false,
     });
 
-    console.log(imageUrl);
-    console.log(isUploaded);
-    // useEffect(() => {
-    //     setFormData({ ...formData, profile_pic: imageUrl })
-    //     console.log(formData);
-    // }, [imageUrl])
 
     const createPost = async (postData) => {
-        // console.log("Caption!!!", postContent);
 
         try {
             console.log("posting data", postData);
@@ -69,8 +69,10 @@ export default function CreatePost() {
 
                 if (response.ok) {
                     console.log(" Review Posted!");
+                    window.location.href = '/feed';
                 } else {
                     console.error("Review not posted!", await response.json());
+                    alert('Error posting. Please try again.');
                 }
             } else {
                 const response = await fetch("/api/social", {
@@ -83,26 +85,16 @@ export default function CreatePost() {
 
                 if (response.ok) {
                     console.log("Social Posted!");
+                    window.location.href = '/feed';
                 } else {
                     console.error("Social not posted!", await response.json());
+                    alert('Error posting. Please try again.');
                 }
             }
         } catch (error) {
             console.error("Error:", error);
         }
     };
-
-    const postDataWithRestaurant = {
-        photo_id: "uploaded photo",
-        description: "caption",
-        restaurant_name: "name of restaurant",
-        restaurant_city: "city of restaurant",
-        // is_recommended: true, 
-    };
-
-    createPost(postDataWithRestaurant);
-
-
 
 
     const handlePostSubmit = () => {
@@ -111,6 +103,7 @@ export default function CreatePost() {
             return;
         }
         const postData = {
+            creator_id: userId,
             photo_id: imageUrl,
             description: postContent,
             restaurant_name: restaurantName,
@@ -125,7 +118,7 @@ export default function CreatePost() {
     };
 
 
-
+    if (!userId) return (<></>);
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardContent>
@@ -137,7 +130,17 @@ export default function CreatePost() {
                         setIsUploaded={setIsUploaded}
                     />
                 </div>
-                {isUploaded ? <p>Image uploaded!</p> : <p>No image selected</p>}
+
+                {isUploaded ?
+                    <div className="mt-1">
+                        <img src={imageUrl} alt="User Profile Pic" style={{
+                            background: "white",
+                            // width: "4rem",
+                            height: "3rem"
+                        }} />
+                        <p>Image uploaded!</p>
+                    </div>
+                    : <p>No image selected</p>}
 
                 <TextField
                     required
