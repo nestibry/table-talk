@@ -1,8 +1,15 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useAppCtx } from "../utils/AppProvider"
-import TTlogo from '/assets/TableTalk.png'
+import { useAppCtx } from "../utils/AppProvider";
+import TTlogo from '/assets/TableTalk.png';
+import HomeIcon from '/images/house.png';
+import SearchIcon from '/images/search.png';
+import ProfileIcon from '/images/profile.png';
+import AddPostIcon from '/images/add.png';
+import LogoutIcon from '/images/logout.png';
+import LoginIcon from '/images/login.png';
+import SignupIcon from '/images/signup.png';
 
 
 
@@ -27,17 +34,37 @@ export default function Header() {
                         className="justify-content-end"
                     >
                         <Nav className="" style={{ color: "#070808" }}>
-                            {user?._id !== undefined ? (
-                                <Nav.Link href="/feed" style={{ color: "#070808", fontSize: "25px" }}>News Feed</Nav.Link>
-                            ) : (
-                                <Nav.Link href="/signup" style={{ color: "#070808", fontSize: "25px" }}>Sign Up</Nav.Link>
-                            )}
 
                             {user?._id !== undefined ? (
-                                <Nav.Link href="/logout" style={{ color: "#070808", fontSize: "25px" }}>Logout</Nav.Link>
+                                <>
+
+                                    <Nav.Link href="/post" style={{ color: "#070808" }}>
+                                        <img src={AddPostIcon} alt='create a post' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                    <Nav.Link href="/feed" style={{ color: "#070808", }}>
+                                        <img src={HomeIcon} alt='feed' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                    <Nav.Link href="/search" style={{ color: "#070808" }}>
+                                        <img src={SearchIcon} alt='search' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                    <Nav.Link href="/userprofile" style={{ color: "#070808" }}>
+                                        <img src={ProfileIcon} alt='user profile' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                    <Nav.Link href="/logout" style={{ color: "#070808" }}>
+                                        <img src={LogoutIcon} alt='logout' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                </>
                             ) : (
-                                <Nav.Link href="/auth" style={{ color: "#070808", fontSize: "25px" }}>Login</Nav.Link>
+                                <>
+                                    <Nav.Link href="/signup" style={{ color: "#070808" }}>
+                                        <img src={SignupIcon} alt='signup' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                    <Nav.Link href="/auth" style={{ color: "#070808" }}>
+                                        <img src={LoginIcon} alt='login' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
+                                </>
                             )}
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/esm/Container";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useAppCtx } from "../utils/AppProvider";
@@ -26,7 +25,6 @@ export default function NewsFeed() {
                 // Create and Sort the NewsFeed
                 const newsFeed = [...socials, ...reviews];
                 const sortedNewsFeed = newsFeed.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                console.log('Sorted News Feed', sortedNewsFeed);
                 setPosts(sortedNewsFeed);
             }
 
@@ -36,7 +34,6 @@ export default function NewsFeed() {
     }
 
     useEffect(() => {
-        console.log('User:', appCtx.user);
         fetchPosts();
     }, []);
 
@@ -46,20 +43,16 @@ export default function NewsFeed() {
             <h1 style={{ textAlign: "center", fontSize: "50px", color: "#FFA6D7" }}>Discover a love story on a plate in the latest post – <br />
                 <span style={{ color: "#C24646" }}>Where food and dating find their perfect match!</span></h1>
             <br />
-            <Container>
 
-                {posts ? (
-                    posts.map(post => (
-                        <div className="mb-3">
-                            <PostCard key={post._id} post={post} />
-                        </div>
-                    ))
-                ) : (
-                    <p>Loading...</p>
-                )}
-
-            </Container>
-
+            {posts ? (
+                posts.map(post => (
+                    <div key={post._id} className="mb-3">
+                        <PostCard  post={post} />
+                    </div>
+                ))
+            ) : (
+                <p>Loading...</p>
+            )}
 
         </>
     );
