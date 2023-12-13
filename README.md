@@ -17,9 +17,9 @@ Where your LOVE for great FOOD meets the joy of new CONNECTIONS. Want to spice u
 
 ## Usage
 
-[Deployed Site](https://table-talk-5dc7ec66643d.herokuapp.com/)
+[Click to view the Table Talk site on Heroku](https://table-talk-5dc7ec66643d.herokuapp.com/)
 
-[![Table Talk home page welcoming visitors to signup or login to connect with other foodies.](/client/public/assets/TableTalk.png)](https://table-talk-5dc7ec66643d.herokuapp.com/)
+[![Table Talk home page welcoming visitors to signup or login to connect with other foodies.](/table-talk-home.png)](https://table-talk-5dc7ec66643d.herokuapp.com/)
 
 ## Tech Stack 
 This application features a MERN stack:
