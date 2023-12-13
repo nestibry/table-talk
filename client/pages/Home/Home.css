@@ -22,10 +22,14 @@
   color: black;
   font-size: 80%;
   font-weight: bolder;
-  padding: 10%;
+  /* padding: 10%; */
+
 
 }
 
+.mb-2 {
+  align-items: center;
+}
 
 .signUp {
   /* background-color: #c24646 !important; */
