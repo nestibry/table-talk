@@ -47,7 +47,7 @@ export default function CreateProfile() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
+    // console.log("Form Submitted:", formData);
 
     try {
       const response = await fetch("/api/user", {
@@ -58,9 +58,9 @@ export default function CreateProfile() {
         body: JSON.stringify(formData),
       });
 
-      console.log(response);
+      // console.log(response);
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
+      // console.log(jsonResponse);
 
       if (response.ok) {
         window.location.href = "/feed";
@@ -110,7 +110,7 @@ export default function CreateProfile() {
   // console.log(isUploaded);
   useEffect(() => {
     setFormData({ ...formData, profile_pic: imageUrl });
-    console.log(formData);
+
   }, [imageUrl]);
 
   return (
