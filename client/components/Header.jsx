@@ -1,8 +1,11 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useAppCtx } from "../utils/AppProvider"
-import TTlogo from '/assets/TableTalk.png'
+import { useAppCtx } from "../utils/AppProvider";
+import TTlogo from '/assets/TableTalk.png';
+import Home from '/images/house.png'
+import Search from '/images/search.png'
+import Profile from '/images/profile.png'
 
 
 
@@ -28,7 +31,7 @@ export default function Header() {
                     >
                         <Nav className="" style={{ color: "#070808" }}>
                             {user?._id !== undefined ? (
-                                <Nav.Link href="/feed" style={{ color: "#070808", fontSize: "25px" }}>News Feed</Nav.Link>
+                                <Nav.Link href="/feed" style={{ color: "#070808", fontSize: "25px" }}>Feed</Nav.Link>
                             ) : (
                                 <Nav.Link href="/signup" style={{ color: "#070808", fontSize: "25px" }}>Sign Up</Nav.Link>
                             )}
