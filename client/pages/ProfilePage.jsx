@@ -28,31 +28,38 @@ export default function CreateProfile() {
     profile_pic: "",
   });
 
+  const [userData, setUserData] = useState("");
+
+  async function fetchUserData() {
+    try {
+      const response = await fetch("/api/user/65789b2d582835f850ee618a");
+      const userData = await response.json();
+
+      console.log(userData);
+
+      setFormData({
+        email: userData.payload.email,
+        display_name: userData.payload.display_name,
+        password: "",
+        status: userData.payload.status,
+        location_state: userData.payload.location_state,
+        age: userData.payload.age,
+        //do we still want age?
+        gender_identity: userData.payload.gender_identity,
+        //need to add in pronouns
+        profile_pic: userData.payload.profile_pic,
+      });
+    } catch (error) {
+      console.error("Error! ", error);
+    }
+  };
+
   useEffect(() => {
     // am I using the right api call?
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("/api/user");
-        const userData = await response.json();
-
-        setFormData({
-          email: userData.email,
-          display_name: userData.display_name,
-          password: "",
-          status: userData.status,
-          location_state: userData.location_state,
-          age: userData.age,
-          //do we still want age?
-          gender_identity: userData.gender_identity,
-          //need to add in pronouns
-          profile_pic: userData.profile_pic,
-        });
-      } catch (error) {
-        console.error("Error! ", error);
-      }
-    };
-
+    setUserData(appCtx.user);
+    console.log(userData);
     fetchUserData();
+
   }, []);
 
   function handleFormChange(e) {
@@ -124,8 +131,9 @@ export default function CreateProfile() {
         <Form.Group className="mb-3" controlId="formPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-          //type should hide password unless user is editing
-            type={isEditingPassword ? "text" : "password"}
+            //type should hide password unless user is editing
+            // type={isEditingPassword ? "text" : "password"}
+            type="text"
             name="password"
             placeholder="Password"
             value={formData.password}
@@ -135,10 +143,10 @@ export default function CreateProfile() {
 
         <Form.Group className="mb-3" controlId="formProfileStatus">
           <Form.Label>Profile Status</Form.Label>
-          <Form.Select 
-          name="status"
-          value={formData.status}
-          onChange={handleFormChange}>
+          <Form.Select
+            name="status"
+            value={formData.status}
+            onChange={handleFormChange}>
             <option>Select Status</option>
             <option value="1">Looking for new friends</option>
             <option value="2">Looking for a romantic connection</option>
@@ -149,8 +157,8 @@ export default function CreateProfile() {
         <Form.Group className="mb-3" controlId="formLocationState">
           <Form.Label>State</Form.Label>
           <Form.Select name="location_state"
-          value={formData.location_state}
-          onChange={handleFormChange}>
+            value={formData.location_state}
+            onChange={handleFormChange}>
             <option value="">Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -207,10 +215,10 @@ export default function CreateProfile() {
 
         <Form.Group className="mb-3" controlId="formAge">
           <Form.Label>Age</Form.Label>
-          <Form.Select 
-          name="age"
-          value={formData.age}
-          onChange={handleFormChange}>
+          <Form.Select
+            name="age"
+            value={formData.age}
+            onChange={handleFormChange}>
             <option>Select Age Range</option>
             <option value="1">18-25</option>
             <option value="2">26-35</option>
@@ -222,9 +230,10 @@ export default function CreateProfile() {
 
         <Form.Group className="mb-3" controlId="formGender">
           <Form.Label>Pronouns</Form.Label>
-          <Form.Select 
-          name="gender"
-          value={formData.gender_identity}>
+          <Form.Select
+            name="gender"
+            value={formData.gender_identity}
+            onChange={handleFormChange}>
             <option>Select Pronoun</option>
             <option value="1">He/Him</option>
             <option value="2">She/Her</option>
