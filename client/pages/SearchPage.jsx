@@ -12,7 +12,6 @@ import Search from "../components/Search";
 
 
 export default function SearchPage() {
-  // const userId = "65789b2d582835f850ee618a"
   const [data, setData] = useState([]);
 
   // const [status, setStatus] = useState('Not Following');
