@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 // import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import Grid from "@mui/material/Grid";
 
@@ -53,90 +53,110 @@ export default function PostCard(props) {
 
   return (
     <>
-      <Card
-        sx={{
-          maxWidth: "100%",
-          display: "flex",
-          justifyContent: "center",
-
-          //   alignItems: "center",
-        }}
-      >
-        <CardContent>
-          <Grid container spacing={2} alignItems="flex-start">
-            <Grid item xs={12} md={6}>
-              <CardHeader
-                title={display_name}
-                subheader={formattedPostDate}
-                avatar={<Avatar alt={display_name} src={avatarUrl} />}
-                action={
-                  <Button
-                    onClick={() => console.log("Follow/Unfollow clicked")}
-                  >
-                    {/* {post.status === "Following" ? "Unfollow" : "Follow"} */}
-                  </Button>
-                }
-              />
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                style={{ fontSize: "14px", padding: "0" }}
-              >
-                {description}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                style={{ fontSize: "12px", padding: "0" }}
-              >
-                {restaurant_name}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                style={{ fontSize: "12px", padding: "0" }}
-              >
-                {restaurant_city}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CardMedia
-                component="img"
-                style={{ width: "100%", marginBottom: "16px" }}
-                image={postImage}
-                alt="Post Image"
-              />
-            </Grid>
-          </Grid>
-        </CardContent>
-
-        <CardActions disableSpacing>
-          {/* <IconButton aria-label="like"><ThumbUpIcon /></IconButton> */}
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        </CardActions>
-
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <main style={{ justifyContent: "center", display: "flex" }}>
+        <Card
+          style={{
+            width: "80%",
+            height: "50%",
+            //   display: "flex",
+            //   justifyContent: "center",
+          }}
+        >
           <CardContent>
-            <Typography paragraph>Comments</Typography>
+            <Grid container spacing={2} alignItems="flex-start">
+              <Grid item xs={12} md={6}>
+                <CardHeader
+                  title={display_name}
+                  style={{ fontSize: "50px" }}
+                  subheader={formattedPostDate}
+                  avatar={<Avatar alt={display_name} src={avatarUrl} />}
+                  // action={
+                  //   <Button
+                  //     onClick={() => console.log("Follow/Unfollow clicked")}
+                  //   >
 
-            {comments.map((comment) => (
-              <div key={comment.comment_id} className="mb-2">
-                <Avatar alt={comment.creator_id.display_name} src={comment.creator_id.profile_pic} />
-                <Typography variant="body2" color="text.secondary">
-                  <strong>{comment.creator_id.display_name}:</strong> {comment.comment_body}
+                  //   </Button>
+                  // }
+                />
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  style={{
+                    fontSize: "40px",
+                    padding: "0",
+                    fontWeight: "bold",
+                    fontStyle: "italic",
+                    color: "black",
+                  }}
+                >
+                  {description}
                 </Typography>
-              </div>
-            ))}
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  style={{ fontSize: "25px", padding: "0", color: " #F57C36" }}
+                >
+                  {restaurant_name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  style={{ fontSize: "25px", padding: "0", color: "#C24646" }}
+                >
+                  {restaurant_city}
+                </Typography>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <CardMedia
+                  component="img"
+                  style={{ width: "100%", maxHeight: "250px", objectFit: "contain" }}
+                  image={postImage}
+                  alt="Post Image"
+                />
+              </Grid>
+            </Grid>
+
+
+            <Grid container spacing={1} alignItems={"flex-start"}> 
+            <Grid item xs={12} sm={6}> 
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography paragraph>Comments</Typography>
+
+                {comments.map((comment) => (
+                  <div key={comment.comment_id} className="">
+                    <Avatar
+                      alt={comment.creator_id.display_name}
+                      src={comment.creator_id.profile_pic}
+                    />
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{comment.creator_id.display_name}:</strong>{" "}
+                      {comment.comment_body}
+                    </Typography>
+                  </div>
+                ))}
+              </CardContent>
+            </Collapse>
+            </Grid>
+            <Grid item xs={12} sm={6}> 
+            <CardActions disableSpacing>
+              {/* <IconButton aria-label="like"><ThumbUpIcon /></IconButton> */}
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+            </Grid>
+            
+            </Grid>
           </CardContent>
-        </Collapse>
-      </Card>
+        </Card>
+      </main>
     </>
   );
 }
