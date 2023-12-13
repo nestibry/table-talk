@@ -1,4 +1,4 @@
-# ![Table Talk home page welcoming visitors to signup or login to connect with other foodies.](/client/public/assets/TableTalk.png) Table Talk
+# [![Table Talk home page welcoming visitors to signup or login to connect with other foodies.](/client/public/assets/TableTalk.png)](https://table-talk-5dc7ec66643d.herokuapp.com/) Table Talk
 
 
 [![](https://img.shields.io/badge/License-MIT_License-blue)](https://choosealicense.com/licenses/mit/)
