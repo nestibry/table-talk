@@ -28,8 +28,6 @@ const ExpandMore = styled((props) => {
 export default function PostCard(props) {
     const [expanded, setExpanded] = useState(false);
 
-    console.log(props.post);
-
     const formattedPostDate = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: 'short',
@@ -46,7 +44,6 @@ export default function PostCard(props) {
     const restaurant_city = props.post?.restaurant_city || '';
     const comments = props.post?.comments;
 
-    console.log('comments: ', comments);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
