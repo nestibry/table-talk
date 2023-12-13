@@ -21,7 +21,7 @@ export default function Header() {
     <>
       <Navbar className="display-flex mx-auto">
         <Container fluid
-          style={{ backgroundColor: "white", paddingTop: "5px" }}
+          style={{ backgroundColor: "white",  }}
         >
           <Navbar.Brand href="/">
           <Row>

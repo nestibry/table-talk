@@ -29,20 +29,22 @@ const ExpandMore = styled((props) => {
 export default function PostCard(props) {
   const [expanded, setExpanded] = useState(false);
 
-  const formattedPostDate = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
+  console.log(props)
+
+  const formattedPostDate = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
     hour12: true,
   }).format(new Date(props.post?.createdAt));
-  const display_name = props.post?.creator_id?.display_name || "Unknown";
+  const display_name = props.post?.creator_id?.display_name || 'Unknown';
   const avatarUrl = props.post?.creator_id?.profile_pic;
   const postImage = props.post?.photo_id;
-  const description = props.post?.description || "";
-  const restaurant_name = props.post?.restaurant_name || "";
-  const restaurant_city = props.post?.restaurant_city || "";
+  const description = props.post?.description || '';
+  const restaurant_name = props.post?.restaurant_name || '';
+  const restaurant_city = props.post?.restaurant_city || '';
   const comments = props.post?.comments;
 
   const handleExpandClick = () => {

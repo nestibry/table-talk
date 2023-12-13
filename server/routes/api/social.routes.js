@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // Import any controllers needed here
-const { getAllSocials, getSocialById, createSocial, createComment, addLike, removeLike, updateSocialById, deleteSocialById } = require('../../controllers/social.controller');
+const { getAllSocials, getSocialById, getSocialByUserId, createSocial, createComment, addLike, removeLike, updateSocialById, deleteSocialById } = require('../../controllers/social.controller');
 
 // Declare the routes that point to the controllers above
 router.get("/", async (req, res) => {
@@ -16,6 +16,15 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const payload = await getSocialById(req.params.id)
+    res.status(200).json({ result: "success", payload })
+  } catch (err) {
+    res.status(500).json({ result: "error", payload: err.message })
+  }
+})
+
+router.get("/user/:id", async (req, res) => {
+  try {
+    const payload = await getSocialByUserId(req.params.id)
     res.status(200).json({ result: "success", payload })
   } catch (err) {
     res.status(500).json({ result: "error", payload: err.message })

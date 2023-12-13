@@ -21,7 +21,7 @@ const reviewSchema = new Schema({
   },
   is_recommended: {
     type: Boolean,
-    required: true,
+    // required: true,
   },
   creator_id: {
     type: Schema.Types.ObjectId,
