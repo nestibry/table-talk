@@ -16,7 +16,7 @@ export default function HowToPage() {
   //set up for 3 sec intervals
   const [refStepTwo, inViewStepTwo] = useInView({
     triggerOnce: true,
-    delay: 4000,
+    delay: 3000,
   });
 
   const [refStepThree, inViewStepThree] = useInView({
@@ -25,7 +25,7 @@ export default function HowToPage() {
   });
   const [refStepFour, inViewStepFour] = useInView({
     triggerOnce: true,
-    delay: 8000,
+    delay: 9000,
   });
   return (
     <>
@@ -50,7 +50,7 @@ export default function HowToPage() {
             <Card.Body className="stepOne">
               <Card.Text>
                 Step 1 <br />
-                Sign up today by completing a quick profile.
+                Sign up today by completing a quick profile to take the first step toward finding your perfect foodie companionship.
               </Card.Text>
             </Card.Body>
             {/* <Card.Img variant="bottom" src="holder.js/100px180" /> */}
@@ -118,7 +118,7 @@ export default function HowToPage() {
                     alignContent: "center",
                   }}
                 >
-                  Sign Up Now and Start TableTalking!
+                  Sign Up Now and Start Making Connections!
                 </Button>
               </Card.Text>
             </Card.Body>

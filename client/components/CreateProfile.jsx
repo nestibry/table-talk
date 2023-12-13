@@ -121,12 +121,14 @@ export default function CreateProfile() {
           <span style={{ color: "#C24646", fontStyle: "italic" }}>
             Talking
           </span>{" "}
-            Today!
+            Today
         </h1>
         <br />
-      <main
+        <h1 style={{fontStyle: "italic", textAlign: "center", fontSize: "40px", fontWeight: "bolder"}}> Ensure No Form Field is Left Empty and  <br />Add the Perfect Finishing Touch – Your Photo!</h1>
+      <main className="container mt-5"
         style={{
-          border: "20px solid #C24646",
+          border: "5px solid #FFA6D7",
+          boxShadow: "40px",
           backgroundColor: "#F5BE27",
           padding: "20px",
           borderRadius: "45px",
@@ -134,7 +136,7 @@ export default function CreateProfile() {
           fontWeight: "bolder",
           fontSize: "25px",
           display: "flex",
-          alignItems: "center",
+        //   alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
           maxWidth: "fit-content",
@@ -142,7 +144,7 @@ export default function CreateProfile() {
         }}
       >
         <Form onSubmit={handleFormSubmit}>
-          <Row className="justify-content-center" >
+          <Row className="form" >
             <Col xs={12} md={6}  className="mb-3" >
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email</Form.Label>
@@ -315,9 +317,9 @@ export default function CreateProfile() {
           <Button
             style={{
                 fontSize: "25px",
-                
+                borderRadius: "45px",
                 color: "black",
-                backgroundColor: "#FFA6D7",
+                backgroundColor: "#F57C36",
                 width: "250px",
                 height: "50px",
                 display: "flex",
