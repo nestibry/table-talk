@@ -5,11 +5,11 @@ import { useAppCtx } from "../utils/AppProvider";
 import TTlogo from '/assets/TableTalk.png';
 import HomeIcon from '/images/house.png';
 import SearchIcon from '/images/search.png';
-import ProfileIcon from '/public/images/profile.png';
-import AddPostIcon from '/public/images/Add.png';
-import LogoutIcon from '/public/images/logout.png';
-import LoginIcon from '/public/images/login.png';
-import SignupIcon from '/public/images/signup.png';
+import ProfileIcon from '/images/profile.png';
+import AddPostIcon from '/images/add.png';
+import LogoutIcon from '/images/logout.png';
+import LoginIcon from '/images/login.png';
+import SignupIcon from '/images/signup.png';
 
 
 
@@ -34,8 +34,6 @@ export default function Header() {
                         className="justify-content-end"
                     >
                         <Nav className="" style={{ color: "#070808" }}>
-
-
 
                             {user?._id !== undefined ? (
                                 <>
