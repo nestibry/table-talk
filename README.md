@@ -26,6 +26,7 @@ Where your LOVE for great FOOD meets the joy of new CONNECTIONS. Want to spice u
 The application features a MERN stack:
 - Modern [React](https://react.dev/) front-end, built with [Vite](https://vitejs.dev/), using [React Context](https://react.dev/reference/react/createContext) for storage of global user state. Some [React Bootstrap](https://react-bootstrap.netlify.app/) integration to tidy things up a bit.
 - An [Express](https://expressjs.com/) back-end with [MongoDB/Mongoose](https://www.mongodb.com/) database and [Cloudinary](https://cloudinary.com/) for image storage.
+- The app is hosted by [Heroku](https://dashboard.heroku.com/apps) and database hosted by [MongoDB Atlas](https://www.mongodb.com/)
 
 ## Installation 
 - Clone the repo
