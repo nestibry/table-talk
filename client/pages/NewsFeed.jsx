@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/esm/Container";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useAppCtx } from "../utils/AppProvider";
@@ -26,7 +25,6 @@ export default function NewsFeed() {
                 // Create and Sort the NewsFeed
                 const newsFeed = [...socials, ...reviews];
                 const sortedNewsFeed = newsFeed.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                console.log('Sorted News Feed', sortedNewsFeed);
                 setPosts(sortedNewsFeed);
             }
 
@@ -34,15 +32,10 @@ export default function NewsFeed() {
             console.error(err);
         }
     }
-    console.log('User:', appCtx.user);
-    useEffect(() => {
-        // console.log('User:', appCtx.user);
-        fetchPosts();
-    }, []);
 
     useEffect(() => {
-        console.log('Posts:', posts);
-    }, [posts]);
+        fetchPosts();
+    }, []);
 
 
     return (
