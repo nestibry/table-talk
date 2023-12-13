@@ -20,7 +20,7 @@ export default function SearchPage() {
 
   const [userData, setUserData] = useState("");
 
-  // const appCtx = useAppCtx();
+  const appCtx = useAppCtx();
 
   async function postInfo(searchCriteria, isFollowing) {
     const res = await fetch(`/api/user/search/${userId}`, {
@@ -70,7 +70,7 @@ export default function SearchPage() {
 
 
   useEffect(() => {
-    // console.log(appCtx.user._id);
+    console.log(appCtx.user._id);
   }, []);
 
   //need to add in filter by calls

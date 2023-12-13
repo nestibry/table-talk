@@ -23,6 +23,17 @@ async function getItemById(id) {
   }
 }
 
+async function getItemByUserId(userId) {
+  try {
+    return await Model.find({ creator_id: userId })
+      .populate({ path: "creator_id", select: "display_name profile_pic status" })
+      .populate({ path: "liked_users", select: "display_name" })
+      .populate({ path: "comments.creator_id", select: "display_name profile_pic status" });
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 async function createItem(data) {
   try {
     return await Model.create(data);
@@ -119,6 +130,7 @@ async function deleteItemById(id) {
 module.exports = {
   getAllSocials: getAllItems,
   getSocialById: getItemById,
+  getSocialByUserId: getItemByUserId,
   createSocial: createItem,
   createComment: createComment,
   addLike: addLike,

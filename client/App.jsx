@@ -4,27 +4,27 @@ import AppProvider from "./utils/AppProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import { 
-            ProtectedRoute,
-            Header, 
+import {
+    ProtectedRoute,
+    Header,
 
-            Navbar,
-        } from "./components/";
+    Navbar,
+} from "./components/";
 
-import {    
-            AuthPage, 
-            Logout, 
-            Home, 
-            NewsFeed,
-            ProfilePage,
-            SearchPage,
-            CreatePost,
+import {
+    AuthPage,
+    Logout,
+    Home,
+    NewsFeed,
+    ProfilePage,
+    SearchPage,
+    CreatePost,
 
-            CreateProfile,
-            HowToPage,
-        } from "./pages/";
+    CreateProfile,
+    HowToPage,
+} from "./pages/";
 
-        
+
 export default function App() {
     return (
         <AppProvider>
@@ -52,7 +52,7 @@ export default function App() {
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/newsfeed" element={<NewsFeed />} />
                         <Route path="/nav" element={<Navbar />} />
-                        <Route path="createpost" element={<CreatePost /> } />
+                        <Route path="createpost" element={<CreatePost />} />
 
                     </Routes>
                 </div>

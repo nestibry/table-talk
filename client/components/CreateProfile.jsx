@@ -115,16 +115,16 @@ export default function CreateProfile() {
 
   return (
     <>
-           <h1 style={{textAlign: "center", fontSize: "40px", fontWeight: "bolder"}}>
-          Create Your Profile to Start{" "}
-          <span style={{ color: "#FFA6D7", fontStyle: "italic" }}>Table</span>
-          <span style={{ color: "#C24646", fontStyle: "italic" }}>
-            Talking
-          </span>{" "}
-            Today
-        </h1>
-        <br />
-        <h1 style={{fontStyle: "italic", textAlign: "center", fontSize: "40px", fontWeight: "bolder"}}> Ensure No Form Field is Left Empty and  <br />Add the Perfect Finishing Touch – Your Photo!</h1>
+      <h1 style={{ textAlign: "center", fontSize: "40px", fontWeight: "bolder" }}>
+        Create Your Profile to Start{" "}
+        <span style={{ color: "#FFA6D7", fontStyle: "italic" }}>Table</span>
+        <span style={{ color: "#C24646", fontStyle: "italic" }}>
+          Talking
+        </span>{" "}
+        Today
+      </h1>
+      <br />
+      <h1 style={{ fontStyle: "italic", textAlign: "center", fontSize: "40px", fontWeight: "bolder" }}> Ensure No Form Field is Left Empty and  <br />Add the Perfect Finishing Touch – Your Photo!</h1>
       <main className="container mt-5"
         style={{
           border: "5px solid #FFA6D7",
@@ -136,16 +136,16 @@ export default function CreateProfile() {
           fontWeight: "bolder",
           fontSize: "25px",
           display: "flex",
-        //   alignItems: "center",
+          //   alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
           maxWidth: "fit-content",
-         
+
         }}
       >
         <Form onSubmit={handleFormSubmit}>
           <Row className="form" >
-            <Col xs={12} md={6}  className="mb-3" >
+            <Col xs={12} md={6} className="mb-3" >
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -306,28 +306,38 @@ export default function CreateProfile() {
                     padding: "10px 20px",
                     borderRadius: "5px",
                   }}
-                  
+
+
                 />
+
               </div>
 
-              {isUploaded ? <p>Image uploaded!</p> : <p></p>}
+              {isUploaded ?
+                <div>
+                  <img src={imageUrl} alt="User Profile Pic" style={{
+                    background: "white",
+                    width: "12rem",
+                    height: "12rem"
+                  }} />
+                  <p>Image uploaded!</p>
+                </div> : <p></p>}
             </Col>
           </Row>
-         
+
           <Button
             style={{
-                fontSize: "25px",
-                borderRadius: "45px",
-                color: "black",
-                backgroundColor: "#F57C36",
-                width: "250px",
-                height: "50px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-               
-               
+              fontSize: "25px",
+              borderRadius: "45px",
+              color: "black",
+              backgroundColor: "#F57C36",
+              width: "250px",
+              height: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+
+
             }}
             className="mb-5 margin-top class"
             variant="light"
