@@ -24,7 +24,7 @@ export default function ProfilePage() {
   const appCtx = useAppCtx();
 
   const [userId, setUserId] = useState(appCtx.user._id);
-  console.log(userId);
+
 
   // console.log(appCtx.user)
 
@@ -191,17 +191,31 @@ export default function ProfilePage() {
   if (!userId) return (<></>);
   return (
     <>
-      {/* 
-            [x] email: '',
-            [x] display_name: '',
-            [x] password: '',
+     <h1 style={{ textAlign: "center", fontSize: "40px", fontWeight: "bolder" }}>
+        Welcome to Your{" "}
+        <span style={{ color: "#FFA6D7", fontStyle: "italic" }}>Table</span>
+        <span style={{ color: "#C24646", fontStyle: "italic" }}>
+          Talk
+        </span>{" "}
+        Profile
+      </h1>
+      <br />
+      <h1 style={{ fontStyle: "italic", textAlign: "center", fontSize: "40px", fontWeight: "bolder" }}> Make Edits as Needed and <br />Please Ensure No Form Field is Left Empty</h1>
 
-            [x] status: '' 
-            [x] location_state: '',
-            [x] age: '',
-            gender_identity: '',
-            profile_pic: '',
-        */}
+        <main className="container mt-5"  style={{
+          border: "5px solid #FFA6D7",
+          boxShadow: "40px",
+          backgroundColor: "#F5BE27",
+          padding: "20px",
+          borderRadius: "45px",
+          color: "black",
+          fontWeight: "bolder",
+          fontSize: "25px",
+          justifyContent: "center",
+          overflow: "hidden",
+          maxWidth: "fit-content",
+
+        }} >
       <div className="mb-3">
         <h3>Upload a Profile Pic!</h3>
         <CloudinaryUploadWidget uwConfig={uwConfig} setImageUrl={setImageUrl} setIsUploaded={setIsUploaded} />
@@ -256,9 +270,8 @@ export default function ProfilePage() {
           <Form.Label>Profile Status --- Currently: {formData.status}</Form.Label>
           <Form.Select
             name="status"
-            // value={formData.status}
             onChange={handleFormChange}>
-            <option>Select Status</option>
+            <option >{formData.status}</option>
             <option value="Looking for new friends">Looking for new friends</option>
             <option value="Looking for a romantic connection">Looking for a romantic connection</option>
             <option value="Just here for the food recommendations">Just here for the food recommendations</option>
@@ -269,7 +282,7 @@ export default function ProfilePage() {
           <Form.Label>State --- Currently: {formData.location_state}</Form.Label>
           <Form.Select name="location_state"
             onChange={handleFormChange}>
-            <option value="">Select State</option>
+            <option >{formData.location_state}</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -329,10 +342,10 @@ export default function ProfilePage() {
             name="age"
             // value={formData.age}
             onChange={handleFormChange}>
-            <option>Select Age Range</option>
+            <option>{formData.age}</option>
             <option value="18-25">18-25</option>
             <option value="26-35">26-35</option>
-            <option value="26-45">26-45</option>
+            <option value="36-45">26-45</option>
             <option value="46-60">46-60</option>
             <option value="60+">60+</option>
           </Form.Select>
@@ -344,7 +357,7 @@ export default function ProfilePage() {
             name="gender_identity"
             // value={formData.gender_identity}
             onChange={handleFormChange}>
-            <option>Select Pronoun</option>
+            <option>{formData.gender_identity}</option>
             <option value="He/Him">He/Him</option>
             <option value="She/Her">She/Her</option>
             <option value="They/Them">They/Them</option>
@@ -355,7 +368,9 @@ export default function ProfilePage() {
           Update Profile
         </Button>
       </Form>
+      </main>
       <div>
+      <br />
 
       </div>
       <UserFeed userId={userId}></UserFeed>
@@ -397,6 +412,7 @@ export default function ProfilePage() {
           </Button>
         </Modal.Footer>
       </Modal>
+   
     </>
   );
 }

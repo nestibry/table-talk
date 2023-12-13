@@ -6,7 +6,7 @@ import PostCard from "./PostCard";
 
 export default function UserFeed(props) {
 
-  console.log(props)
+ 
 
   const appCtx = useAppCtx();
   // console.log(appCtx)
@@ -63,9 +63,9 @@ export default function UserFeed(props) {
   return (
     <>
       <h1 style={{ textAlign: "center", fontSize: "50px", color: "#FFA6D7" }}>Discover a love story on a plate in the latest post – <br />
-        <span style={{ color: "#C24646" }}>Where food and dating find their perfect match!</span></h1>
+        <span style={{ color: "#C24646" }}>Check Out All Your Posts!</span></h1>
       <br />
-      <h2>Your Posts</h2>
+   
 
       {posts ? (
         posts.map(post => (

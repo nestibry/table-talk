@@ -54,7 +54,7 @@ export default function CreatePost() {
 
   const createPost = async (postData) => {
     try {
-      console.log("posting data", postData);
+      // console.log("posting data", postData);
 
       if (postData.restaurant_name && postData.restaurant_city) {
         const response = await fetch("/api/review", {
