@@ -135,11 +135,15 @@ export default function CreateProfile() {
           fontSize: "25px",
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          maxWidth: "fit-content",
+         
         }}
       >
         <Form onSubmit={handleFormSubmit}>
-          <Row>
-            <Col xs={12} md={6} className="mb-3">
+          <Row className="justify-content-center" >
+            <Col xs={12} md={6}  className="mb-3" >
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -274,6 +278,8 @@ export default function CreateProfile() {
                   <option>60+</option>
                 </Form.Select>
               </Form.Group>
+
+              <Col xs={12} md={6}></Col>
               <div className="mb-3" style={{ marginRight: "20px" }}>
                 <h3
                   style={{
@@ -284,7 +290,7 @@ export default function CreateProfile() {
                   }}
                 >
                   {" "}
-                  Give Your Profile a FaceUpload a Picture!
+                  Give Your Profile a Face- <br /> Upload a Picture!
                 </h3>
                 <CloudinaryUploadWidget
                   uwConfig={uwConfig}
@@ -304,8 +310,8 @@ export default function CreateProfile() {
 
               {isUploaded ? <p>Image uploaded!</p> : <p></p>}
             </Col>
-            <Col xs={12} md={6}></Col>
           </Row>
+         
           <Button
             style={{
                 fontSize: "25px",
