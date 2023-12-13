@@ -3,13 +3,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useAppCtx } from "../utils/AppProvider";
 import TTlogo from '/assets/TableTalk.png';
-import Home from '/images/house.png';
-import Search from '/images/search.png';
-import Profile from '/images/profile.png';
-// import AddPost from '/images/Add.png';
-// import Logout from '/images/logout.png';
-// import Login from '/images/login.png';
-// import Signup from '/images/signup.png';
+import HomeIcon from '/images/house.png';
+import SearchIcon from '/images/search.png';
+import ProfileIcon from '/public/images/profile.png';
+import AddPostIcon from '/public/images/Add.png';
+import LogoutIcon from '/public/images/logout.png';
+import LoginIcon from '/public/images/login.png';
+import SignupIcon from '/public/images/signup.png';
 
 
 
@@ -35,27 +35,35 @@ export default function Header() {
                     >
                         <Nav className="" style={{ color: "#070808" }}>
 
+
+
                             {user?._id !== undefined ? (
                                 <>
+
+                                    <Nav.Link href="/post" style={{ color: "#070808" }}>
+                                        <img src={AddPostIcon} alt='create a post' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
                                     <Nav.Link href="/feed" style={{ color: "#070808", }}>
-                                        <img src={Home} alt='feed' style={{ height: "50px", width: "50px" }}></img>
+                                        <img src={HomeIcon} alt='feed' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
                                     <Nav.Link href="/search" style={{ color: "#070808" }}>
-                                        <img src={Search} alt='search' style={{ height: "50px", width: "50px" }}></img>
+                                        <img src={SearchIcon} alt='search' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
                                     <Nav.Link href="/userprofile" style={{ color: "#070808" }}>
-                                        <img src={Profile} alt='user profile' style={{ height: "50px", width: "50px" }}></img>
+                                        <img src={ProfileIcon} alt='user profile' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
-                                    <Nav.Link href="/post" style={{ color: "#070808", fontSize: "25px" }}>Post</Nav.Link>
-                                    <Nav.Link href="/logout" style={{ color: "#070808", fontSize: "25px" }}>Logout</Nav.Link>
+                                    <Nav.Link href="/logout" style={{ color: "#070808" }}>
+                                        <img src={LogoutIcon} alt='logout' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
                                 </>
                             ) : (
                                 <>
                                     <Nav.Link href="/signup" style={{ color: "#070808" }}>
-                                        <img src={Profile} alt='user signup' style={{ height: "50px", width: "50px" }}></img>
+                                        <img src={SignupIcon} alt='signup' style={{ height: "50px", width: "50px" }}></img>
                                     </Nav.Link>
-                                    <Nav.Link href="/signup" style={{ color: "#070808", fontSize: "25px" }}>Sign Up</Nav.Link>
-                                    <Nav.Link href="/auth" style={{ color: "#070808", fontSize: "25px" }}>Login</Nav.Link>
+                                    <Nav.Link href="/auth" style={{ color: "#070808" }}>
+                                        <img src={LoginIcon} alt='login' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
                                 </>
                             )}
 
