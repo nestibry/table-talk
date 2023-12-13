@@ -129,7 +129,7 @@ const reviewSeedData = [
     comments: [],
   },
   {
-    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702159868/table-talk/default.png",
+    photo_id: "https://res.cloudinary.com/table-talk/image/upload/v1702420505/table-talk/alone.png",
     description: "The burger was good!",
     restaurant_name: "Local Burger",
     restaurant_city: "Minneapolis",
