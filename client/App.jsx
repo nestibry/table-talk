@@ -40,6 +40,9 @@ export default function App() {
 
                         {/* Protected Routes */}
                         <Route path="/feed" element={<ProtectedRoute><NewsFeed /></ProtectedRoute>} />
+                        <Route path="/search" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
+                        <Route path="/userprofile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+                        <Route path="/post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
 
 
                         {/* These are Development Routes  */}

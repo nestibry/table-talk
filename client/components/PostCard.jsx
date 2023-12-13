@@ -28,8 +28,6 @@ const ExpandMore = styled((props) => {
 export default function PostCard(props) {
     const [expanded, setExpanded] = useState(false);
 
-    console.log(props.post);
-
     const formattedPostDate = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: 'short',
@@ -39,8 +37,8 @@ export default function PostCard(props) {
         hour12: true,
     }).format(new Date(props.post?.createdAt));
     const display_name = props.post?.creator_id?.display_name || 'Unknown';
-    const avatarUrl = "https://www.w3schools.com/css/img_forest.jpg";
-    const postImage = "https://www.w3schools.com/css/img_forest.jpg";
+    const avatarUrl = props.post?.creator_id?.profile_pic;
+    const postImage = props.post?.photo_id ;
     const description = props.post?.description || '';
     const restaurant_name = props.post?.restaurant_name || '';
     const restaurant_city = props.post?.restaurant_city || '';
@@ -52,54 +50,54 @@ export default function PostCard(props) {
     };
 
     return (
-        <>
-            <Card sx={{ maxWidth: 345 }}>
 
-                <CardHeader
-                    title={display_name}
-                    subheader={formattedPostDate}
-                    avatar={<Avatar alt={display_name} src={avatarUrl} />}
-                    action={
-                        <Button onClick={() => console.log("Follow/Unfollow clicked")}>
-                            {/* {post.status === "Following" ? "Unfollow" : "Follow"} */}
-                        </Button>
-                    }
-                />
+        <Card  sx={{ maxWidth: 345 }}>
 
-                <CardMedia component="img" height="200" image={postImage} alt="Post Image" />
+            <CardHeader
+                title={display_name}
+                subheader={formattedPostDate}
+                avatar={<Avatar alt={display_name} src={avatarUrl} />}
+                action={
+                    <Button onClick={() => console.log("Follow/Unfollow clicked")}>
+                        {/* {post.status === "Following" ? "Unfollow" : "Follow"} */}
+                    </Button>
+                }
+            />
 
+            <CardMedia component="img" height="200" image={postImage} alt="Post Image" />
+
+            <CardContent>
+                <Typography variant="body2" color="text.secondary">{description}</Typography>
+                <Typography variant="body2" color="text.secondary">{restaurant_name}</Typography>
+                <Typography variant="body2" color="text.secondary">{restaurant_city}</Typography>
+            </CardContent>
+
+
+            <CardActions disableSpacing>
+                <IconButton aria-label="like">
+                    <ThumbUpIcon />
+                </IconButton>
+                <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
+                    <ExpandMoreIcon />
+                </ExpandMore>
+            </CardActions>
+
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography variant="body2" color="text.secondary">{description}</Typography>
-                    <Typography variant="body2" color="text.secondary">{restaurant_name}</Typography>
-                    <Typography variant="body2" color="text.secondary">{restaurant_city}</Typography>
+                    <Typography paragraph>Comments</Typography>
+
+                    {comments.map((comment) => (
+                        <div key={comment.comment_id} className="mb-2">
+                            <Avatar alt={comment.creator_id.display_name} src={comment.creator_id.profile_pic} />
+                            <Typography variant="body2" color="text.secondary">
+                                <strong>{comment.creator_id.display_name}:</strong> {comment.comment_body}
+                            </Typography>
+                        </div>
+                    ))}
+
                 </CardContent>
+            </Collapse>
+        </Card>
 
-
-                <CardActions disableSpacing>
-                    <IconButton aria-label="like">
-                        <ThumbUpIcon />
-                    </IconButton>
-                    <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
-                        <ExpandMoreIcon />
-                    </ExpandMore>
-                </CardActions>
-
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                        <Typography paragraph>Comments</Typography>
-
-                        {comments.map((comment) => (
-                            <div key={comment._id} className="mb-2">
-                                <Avatar alt={comment.creator_id} src='url/to/avatar.jpg' />
-                                <Typography variant="body2" color="text.secondary">
-                                    <strong>{comment.creator_id}:</strong> {comment.comment_body}
-                                </Typography>
-                            </div>
-                        ))}
-
-                    </CardContent>
-                </Collapse>
-            </Card>
-        </>
     );
 }
