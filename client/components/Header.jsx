@@ -3,9 +3,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useAppCtx } from "../utils/AppProvider";
 import TTlogo from '/assets/TableTalk.png';
-import Home from '/images/house.png'
-import Search from '/images/search.png'
-import Profile from '/images/profile.png'
+import Home from '/images/house.png';
+import Search from '/images/search.png';
+import Profile from '/images/profile.png';
+// import AddPost from '/images/Add.png';
+// import Logout from '/images/logout.png';
+// import Login from '/images/login.png';
+// import Signup from '/images/signup.png';
 
 
 
@@ -47,6 +51,9 @@ export default function Header() {
                                 </>
                             ) : (
                                 <>
+                                    <Nav.Link href="/signup" style={{ color: "#070808" }}>
+                                        <img src={Profile} alt='user signup' style={{ height: "50px", width: "50px" }}></img>
+                                    </Nav.Link>
                                     <Nav.Link href="/signup" style={{ color: "#070808", fontSize: "25px" }}>Sign Up</Nav.Link>
                                     <Nav.Link href="/auth" style={{ color: "#070808", fontSize: "25px" }}>Login</Nav.Link>
                                 </>
