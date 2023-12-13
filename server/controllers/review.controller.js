@@ -6,7 +6,8 @@ async function getAllItems() {
   try {
     return await Model.find()
       .populate({ path: "creator_id", select: "display_name profile_pic status" })
-      .populate({ path: "liked_users", select: "display_name" });
+      .populate({ path: "liked_users", select: "display_name" })
+      .populate({ path: "comments.creator_id", select: "display_name profile_pic status" });
   } catch (err) {
     throw new Error(err)
   }
@@ -16,7 +17,8 @@ async function getItemById(id) {
   try {
     return await Model.findById(id)
       .populate({ path: "creator_id", select: "display_name profile_pic status" })
-      .populate({ path: "liked_users", select: "display_name" });
+      .populate({ path: "liked_users", select: "display_name" })
+      .populate({ path: "comments.creator_id", select: "display_name profile_pic status" });
   } catch (err) {
     throw new Error(err)
   }
@@ -26,7 +28,8 @@ async function getItemByUserId(userId) {
   try {
     return await Model.find({ creator_id: userId })
       .populate({ path: "creator_id", select: "display_name profile_pic status" })
-      .populate({ path: "liked_users", select: "display_name" });
+      .populate({ path: "liked_users", select: "display_name" })
+      .populate({ path: "comments.creator_id", select: "display_name profile_pic status" });
   } catch (err) {
     throw new Error(err)
   }

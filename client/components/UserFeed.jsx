@@ -6,22 +6,22 @@ import PostCard from "./PostCard";
 
 export default function UserFeed(props) {
 
-  // console.log(props)
+  console.log(props)
 
   const appCtx = useAppCtx();
   // console.log(appCtx)
 
-  const tempId = "6579277b28a25b07415fccff"
+  const tempId = "6579e735794d4ceedc70180d"
 
   const [posts, setPosts] = useState();
   const [userData, setUserData] = useState();
 
   async function fetchPosts() {
     try {
-      const socialsResponse = await fetch(`/api/social/user/${tempId}`);
+      const socialsResponse = await fetch(`/api/social/user/${props.userId}`);
       const socialsResponseJson = await socialsResponse.json();
 
-      const reviewsResponse = await fetch(`/api/review/user/${tempId}`);
+      const reviewsResponse = await fetch(`/api/review/user/${props.userId}`);
       const reviewsResponseJson = await reviewsResponse.json();
 
       if (socialsResponseJson.result === "success" && reviewsResponseJson.result === "success") {

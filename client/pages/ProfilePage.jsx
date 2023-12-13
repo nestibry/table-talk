@@ -19,10 +19,16 @@ import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
 
 export default function ProfilePage() {
-  const appCtx = useAppCtx();
-  console.log(appCtx.user)
 
-  const tempId = "6579277b28a25b07415fccff"
+
+  const appCtx = useAppCtx();
+
+  const [userId, setUserId] = useState(appCtx.user._id);
+  console.log(userId);
+
+  // console.log(appCtx.user)
+
+  const tempId = "6579e735794d4ceedc70180d"
 
   const [formData, setFormData] = useState({
     email: "",
@@ -36,6 +42,8 @@ export default function ProfilePage() {
   });
 
   const [userData, setUserData] = useState("");
+
+  // const [isEditingPassword, setIsEditingPassword] = useState(false);
 
   const [imageUrl, setImageUrl] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
@@ -58,12 +66,10 @@ export default function ProfilePage() {
 
   }
 
-  // const handleUpdateClose = () => setUpdateShow(false);
-
 
   async function fetchUserData() {
     try {
-      const response = await fetch(`/api/user/${tempId}`);
+      const response = await fetch(`/api/user/${userId}`);
       const tempUserData = await response.json();
 
       // console.log(tempUserData);
@@ -71,7 +77,7 @@ export default function ProfilePage() {
       setFormData({
         email: tempUserData.payload.email,
         display_name: tempUserData.payload.display_name,
-        password: "",
+        // password: "",
         status: tempUserData.payload.status,
         location_state: tempUserData.payload.location_state,
         age: tempUserData.payload.age,
@@ -80,6 +86,7 @@ export default function ProfilePage() {
         //need to add in pronouns
         profile_pic: tempUserData.payload.profile_pic,
       });
+      setImageUrl(tempUserData.payload.profile_pic)
     } catch (error) {
       console.error("Error! ", error);
     }
@@ -119,6 +126,12 @@ export default function ProfilePage() {
 
 
   function handleFormChange(e) {
+    console.log(e.target.name)
+    // if (e.target.name === "password") {
+    //   setIsEditingPassword(true)
+    // } else {
+    //   setIsEditingPassword(false);
+    // }
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
@@ -127,7 +140,7 @@ export default function ProfilePage() {
     console.log("Form Updated", formData);
 
     try {
-      const response = await fetch(`/api/user/${tempId}`, {
+      const response = await fetch(`/api/user/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -157,12 +170,16 @@ export default function ProfilePage() {
   }, []);
 
   useEffect(() => {
+    if (appCtx?.user?._id) setUserId(appCtx.user._id || "");
+  }, [appCtx.user]);
+
+  useEffect(() => {
     // am I using the right api call?
     // console.log(userData)
     fetchUserData();
     // console.log(userData)
 
-  }, [userData]);
+  }, [userId]);
 
   useEffect(() => {
     setFormData({ ...formData, profile_pic: imageUrl });
@@ -171,6 +188,7 @@ export default function ProfilePage() {
 
   // console.log(userData);
 
+  if (!userId) return (<></>);
   return (
     <>
       {/* 
@@ -188,6 +206,12 @@ export default function ProfilePage() {
         <h3>Upload a Profile Pic!</h3>
         <CloudinaryUploadWidget uwConfig={uwConfig} setImageUrl={setImageUrl} setIsUploaded={setIsUploaded} />
       </div>
+
+      <img src={imageUrl} alt="User Profile Pic" style={{
+        background: "white",
+        width: "4rem",
+        height: "4rem"
+      }} />
 
       {isUploaded ? <p>Image uploaded!</p> : <p>No profile pic selected</p>}
 
@@ -219,8 +243,8 @@ export default function ProfilePage() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             //type should hide password unless user is editing
-            // type={isEditingPassword ? "text" : "password"}
-            type="text"
+            type={isEditingPassword ? "text" : "password"}
+            // type="text"
             name="password"
             placeholder="Password"
             value={formData.password}
@@ -334,7 +358,7 @@ export default function ProfilePage() {
       <div>
 
       </div>
-      <UserFeed userData={userData}></UserFeed>
+      <UserFeed userId={userId}></UserFeed>
 
       <Modal
         show={updateShow}

@@ -25,16 +25,17 @@ function CloudinaryUploadWidget({ uwConfig, setImageUrl, setIsUploaded }) {
     }
   }, [loaded]);
 
-  const initializeCloudinaryWidget = () => {
+  const initializeCloudinaryWidget = (e) => {
+    e.preventDefault();
     if (loaded) {
       var myWidget = window.cloudinary.createUploadWidget(
         uwConfig,
         (error, result) => {
           if (!error && result && result.event === "success") {
             // console.log(result)
-            console.log("Done! Here is the image info: ", result.info);
+            // console.log("Done! Here is the image info: ", result.info);
             const coords = result.info.coordinates.custom[0];
-            console.log(coords);
+            // console.log(coords);
             const url = `https://res.cloudinary.com/table-talk/image/upload/x_${coords[0]},y_${coords[1]},w_${coords[2]},h_${coords[3]},c_crop/${result.info.path}`
             // 
             setImageUrl(url);
