@@ -22,19 +22,27 @@
 
 .stepOne {
   background-color: #F5BE27;
+  border-radius: 15px 15px 5px 5px;
+  font-weight: 900;
 
 }
 
 .stepTwo {
-  background-color:  #FFA6D7
+  background-color:  #FFA6D7;
+  border-radius: 15px 15px 5px 5px;
+  font-weight: 900;
 }
 
 .stepThree {
   background-color: #F57C36;
+  border-radius: 15px 15px 5px 5px;
+  font-weight: 900;
 }
 
 .stepFour {
   background-color:#C24646 ;
+  border-radius: 15px 15px 5px 5px;
+  font-weight: 900;
 }
 .animated-card {
   opacity: 0;

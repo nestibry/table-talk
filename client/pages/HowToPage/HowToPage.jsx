@@ -16,16 +16,16 @@ export default function HowToPage() {
   //set up for 3 sec intervals
   const [refStepTwo, inViewStepTwo] = useInView({
     triggerOnce: true,
-    delay: 6000,
+    delay: 4000,
   });
 
   const [refStepThree, inViewStepThree] = useInView({
     triggerOnce: true,
-    delay: 8000,
+    delay: 6000,
   });
   const [refStepFour, inViewStepFour] = useInView({
     triggerOnce: true,
-    delay: 10000,
+    delay: 8000,
   });
   return (
     <>
@@ -42,7 +42,7 @@ export default function HowToPage() {
         <AnimatePresence>
           <AnimatedCard
             key="stepOne"
-            style={{ border: "none" }}
+            style={{ border: "none"}}
             ref={refStepOne}
             className={`animated-card ${inViewStepOne ? "in-view" : ""}`}
             animate={{ opacity: 1 }}

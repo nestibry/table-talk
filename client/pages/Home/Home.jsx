@@ -47,7 +47,7 @@ export default function Home() {
         </motion.h2>
         <br />
         
-        <Card style={{border: "none", borderRadius: "15px", overflow: "hidden"}}>
+        <Card style={{border: "20px solid #F5BE27", overflow: "hidden", borderRadius: "75px"  }}>
           <Card.Body className="homecard" >
             <Row>
               <Col xs={12} md={7}>
